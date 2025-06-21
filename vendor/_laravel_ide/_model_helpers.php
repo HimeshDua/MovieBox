@@ -7,16 +7,26 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property mixed $rating
+     * @property mixed $year
+     * @property mixed $duration
+     * @property string $language
+     * @property string|null $category
      * @property string $link
+     * @property string|null $poster
+     * @property mixed $rating
      * @property string $description
      * @property string $title
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereTitle($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereDescription($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereLink($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereRating($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie wherePoster($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereLink($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereCategory($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereLanguage($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereDuration($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereYear($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie newModelQuery()
