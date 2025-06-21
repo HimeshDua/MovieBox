@@ -11,9 +11,10 @@
 
 <body class="min-h-screen w-screen bg-background text-foreground overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="container mx-auto bg-sidebar text-sidebar-foreground py-4 px-6 rounded-b-[--radius] shadow-md">
+    <nav class="container mx-auto bg-sidebar text-sidebar-foreground py-4 px-6 rounded-b-radius shadow-md">
         <div class="flex items-center justify-end gap-6">
+            <a href="/"
+                class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">Home</a>
             <a href="/movies"
                 class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">Movies</a>
             <a href="/shows"
@@ -21,8 +22,8 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto bg-card text-card-foreground mt-8 p-6 rounded-[--radius] shadow-sm">
+    <main
+        class="container flex flex-col gap-y-8 mx-auto px-4 sm:px-6 py-10 max-w-6xl bg-card text-card-foreground mt-8 p-6 rounded-[--radius] shadow-sm">
         {{ $slot }}
     </main>
 

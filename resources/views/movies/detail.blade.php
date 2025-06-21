@@ -15,7 +15,6 @@
         <div
             class="flex flex-col md:flex-row gap-8 bg-card text-card-foreground border border-border rounded-2xl shadow-sm p-6">
 
-            {{-- Poster --}}
             <div class="w-full md:w-64 h-96 bg-muted rounded-md overflow-hidden">
                 @if ($movie->poster)
                     <img src="{{ $movie->poster }}" alt="{{ $movie->title }}" class="w-full h-full object-cover" />
@@ -55,6 +54,27 @@
                 @endif
             </div>
         </div>
+
+        @if ($movie->shows->count())
+            <div class="mt-8 space-y-4">
+                <h2 class="text-xl font-semibold text-foreground">Available Shows</h2>
+
+                <ul class="grid gap-4 sm:grid-cols-2">
+                    @foreach ($movie->shows as $show)
+                        <li class="bg-muted rounded-[--radius] p-4 border border-border text-muted-foreground">
+                            <p><strong class="text-foreground">Platform:</strong> {{ $show->platform }}</p>
+                            <p><strong class="text-foreground">City:</strong> {{ $show->city }}</p>
+                            <p><strong class="text-foreground">Location:</strong> {{ $show->location ?? 'N/A' }}</p>
+                            <p><strong class="text-foreground">Date:</strong>
+                                {{ \Carbon\Carbon::parse($show->show_date)->format('M d, Y') }}</p>
+                            <p><strong class="text-foreground">Time:</strong>
+                                {{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
 
     </main>
 </x-layout>

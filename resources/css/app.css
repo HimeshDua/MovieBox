@@ -175,6 +175,11 @@
         --tw-ring-color: var(--ring);
     }
 
+    .rounded-b-radius {
+        border-bottom-left-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+    }
+
     .rounded-radius {
         border-radius: var(--radius);
     }

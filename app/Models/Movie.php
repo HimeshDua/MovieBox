@@ -16,4 +16,8 @@ class Movie extends Model
         'rating'
     ];
 
+    public function shows()
+    {
+        return  $this->hasMany(Show::class);
+    }
 }
