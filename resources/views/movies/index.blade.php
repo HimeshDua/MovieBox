@@ -1,7 +1,13 @@
 <x-layout>
-    <h1 class="text-4xl font-bold text-center text-primary tracking-tight">
+
+    <x-slot:title>
+        Movie Collection - Movie Box
+    </x-slot>
+
+    <x-slot:section_title>
         🎬 Browse Our Movie Collection
-    </h1>
+    </x-slot>
+
 
     <ul class="flex flex-col gap-6">
         @foreach ($movies as $movie)
@@ -55,7 +61,7 @@
                                 ⭐ {{ $movie->rating }}/10
                             </span>
                             <a href="{{ route('movies.detail', $movie->id) }}"
-                                class="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-[--radius] hover:bg-primary/90 transition">
+                                class="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-radius hover:bg-primary/90 transition">
                                 🎟 View Trailer
                             </a>
                         </div>

@@ -52,6 +52,42 @@
                         </a>
                     </div>
                 @endif
+
+
+                @if (Auth::check())
+                    <div class="mt-10 border-t pt-6">
+                        <h2 class="text-xl font-semibold text-foreground mb-4">Leave a Review</h2>
+
+                        <form method="POST" action="{{ route('reviews.store', $movie->id) }}" class="space-y-4">
+                            @csrf
+                            <div>
+                                <label for="rating"
+                                    class="block text-sm font-medium text-muted-foreground">Rating</label>
+                                <select name="rating" id="rating" required
+                                    class="mt-1 block w-32 rounded-md border border-border bg-background text-foreground">
+                                    <option value="">Select</option>
+                                    @for ($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}">{{ $i }}/10</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="comment"
+                                    class="block text-sm font-medium text-muted-foreground">Comment</label>
+                                <textarea name="comment" id="comment" rows="3"
+                                    class="mt-1 block w-full rounded-md border border-border bg-background text-foreground"
+                                    placeholder="Write your review..." required></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90">
+                                Submit Review
+                            </button>
+                        </form>
+                    </div>
+                @endif
+
             </div>
         </div>
 
@@ -74,6 +110,24 @@
                 </ul>
             </div>
         @endif
+
+        @if ($movie->reviews->count())
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-foreground mb-4">Reviews</h2>
+                <ul class="space-y-4">
+                    @foreach ($movie->reviews as $review)
+                        <li class="border border-border p-4 rounded-md">
+                            <div class="flex justify-between items-center text-sm text-muted-foreground">
+                                <strong>{{ $review->user->name }}</strong>
+                                <span>⭐ {{ $review->rating }}/10</span>
+                            </div>
+                            <p class="mt-2 text-foreground">{{ $review->comment }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
 
 
     </main>

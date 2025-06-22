@@ -1,6 +1,10 @@
 <x-layout>
     {{-- <main class="space-y-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"> --}}
 
+    <x-slot:title>
+        Discover - Movie Box
+    </x-slot>
+
 
     <section class="text-center py-16 sm:py-24 bg-card rounded-2xl shadow-lg">
         <h1 class="text-4xl sm:text-5xl font-bold text-primary mb-4">Welcome to MovieBox</h1>
