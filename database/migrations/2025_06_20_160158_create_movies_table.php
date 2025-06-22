@@ -14,16 +14,19 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
             $table->string('title');
-            $table->text('description');
-            $table->float('rating', 3, 1)->default(0);
-            $table->string('poster')->nullable();
-            $table->string('link');
-            $table->string('category')->nullable();
-            $table->string('language')->default('English');
+            $table->string('category', 100)->nullable(); // Added length for consistency
+            $table->string('language', 100)->default('English'); // Added length
             $table->integer('duration')->nullable();
             $table->year('year')->nullable();
-            // $table->foreignId("shows_id")->constrained()->onDelete("cascade");
+
+            $table->text('description');
+            $table->float('rating', 3, 1)->default(0);
+
+            $table->string('poster')->nullable(); // Store path to poster image
+            $table->string('link', 2048)->nullable(); // Changed to nullable, increased length for URL
+            $table->string('trailer_url', 2048); // Added this, not nullable as per form validation, increased length for URL
         });
     }
 

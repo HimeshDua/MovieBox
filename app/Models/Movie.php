@@ -13,11 +13,22 @@ class Movie extends Model
         'title',
         'description',
         'link',
-        'rating'
+        'rating',
+        'poster',
+        'category',
+        'language',
+        'duration',
+        'year',
+        'trailer_url'
     ];
 
     public function shows()
     {
         return  $this->hasMany(Show::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
