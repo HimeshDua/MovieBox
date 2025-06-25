@@ -19,10 +19,9 @@ Route::post('/signout', [SigninController::class, "signout"])->middleware('auth'
 Route::get('/signup', [SignupController::class, "showRegister"])->name("signup");
 Route::post('/signup', [SignupController::class, "register"]);
 
-Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create'); // Add this route
-// movie pages
+Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");
-Route::get('/movies/{movie}', [MovieController::class, "detail"])->name("movies.detail");
+Route::get('/movies/{movie:slug}', [MovieController::class, "detail"])->name("movies.detail");
 
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store');
 // Accept movie as parameter in controller

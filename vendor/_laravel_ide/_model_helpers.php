@@ -14,6 +14,7 @@ namespace App\Models {
      * @property mixed $duration
      * @property string $language
      * @property string|null $category
+     * @property string $slug
      * @property string $title
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
@@ -26,6 +27,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereTitle($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereSlug($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereCategory($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereLanguage($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Movie>|Movie whereDuration($value)

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Str;
-
 
 class MovieController extends Controller
 {
@@ -20,8 +18,8 @@ class MovieController extends Controller
     {
         $movie->load('shows');
         return view("movies.detail", [
-            'movie'           => $movie,
-            'title'           => $movie->title . ' | Movie Box'
+            'movie' => $movie,
+            'title' => $movie->title . ' | Movie Box'
         ]);
     }
 

@@ -60,7 +60,7 @@
                             <span class="inline-block text-sm font-medium text-yellow-500">
                                 ⭐ {{ $movie->rating }}/10
                             </span>
-                            <a href="{{ route('movies.detail', $movie->id) }}"
+                            <a href="{{ route('movies.detail', $movie->slug) }}"
                                 class="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-radius hover:bg-primary/90 transition">
                                 🎟 View Trailer
                             </a>
