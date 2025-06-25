@@ -24,6 +24,6 @@ class ReviewController extends Controller
             'comment' => $req->comment,
         ]);
 
-        return redirect()->route('movies.detail', $movie->slug)->with('status', 'Review submitted successfully!');
+        return redirect()->route('movies.detail', $movie->slug)->with('success', 'Review submitted successfully!');
     }
 }

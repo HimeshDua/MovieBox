@@ -73,6 +73,6 @@ class MovieController extends Controller
         ]);
 
         return redirect()->route('movies.detail', $movie->id)
-            ->with('status', 'Movie "' . $movie->title . '" added successfully!');
+            ->with('success', 'Movie "' . $movie->title . '" added successfully!');
     }
 }

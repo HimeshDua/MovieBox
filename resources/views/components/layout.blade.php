@@ -77,13 +77,18 @@
         </nav>
     </header>
 
-    <div class="container mx-auto mt-6 px-4 sm:px-6">
-        @if (session('status'))
+    @if (session('success'))
+        <div class="container mx-auto mt-6 px-4 sm:px-6">
+            <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">
+                {{ session('success') }}
+            </div>
+        </div>
+    @endif
+    {{-- @if (session('status'))
             <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">
                 {{ session('status') }}
             </div>
-        @endif
-    </div>
+        @endif --}}
 
     <main class="max-w-5xl min-h-[58vh]  mx-auto px-4 sm:px-6 py-10 space-y-12">
         {{ $slot }}

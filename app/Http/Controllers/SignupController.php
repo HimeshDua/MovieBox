@@ -21,7 +21,7 @@ class SignupController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed', 'min:6'],
+            'password' => ['required', 'confirmed', 'string', 'min:6'],
         ]);
 
         // Step 2: Create user with hashed password
@@ -35,6 +35,6 @@ class SignupController extends Controller
         Auth::login($user);
 
         // Step 4: Redirect to dashboard/home
-        return redirect('/');
+        return redirect('/')->with('success', 'User created successfully.');
     }
 }

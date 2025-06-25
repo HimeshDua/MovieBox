@@ -21,7 +21,7 @@ class SigninController extends Controller
 
         if (Auth::attempt($credentials)) {
             $req->session()->regenerate();
-            return redirect('/')->with('status', 'You have logged in successfully.');
+            return redirect('/')->with('success', 'You have logged in successfully.');
         }
 
 
