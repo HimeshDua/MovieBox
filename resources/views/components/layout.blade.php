@@ -56,7 +56,7 @@
                     </span>
 
 
-                    <form method="POST" action="{{ route('signout') }}">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
                             class="px-3 py-1 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors rounded-md text-sm font-semibold">
@@ -64,13 +64,13 @@
                         </button>
                     </form>
                 @else
-                    <a href="{{ route('signin') }}"
-                        class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
-                        Sign In
+                    <a href="{{ route('login') }}"
+                        class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors hover:underline underline-offset-2 duration-150">
+                        Log In
                     </a>
-                    <a href="{{ route('signup') }}"
-                        class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
-                        Sign Up
+                    <a href="{{ route('register') }}"
+                        class="px-3 py-1 rounded-md text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors hover:underline underline-offset-2 duration-150">
+                        Register
                     </a>
                 @endauth
             </div>
@@ -84,11 +84,6 @@
             </div>
         </div>
     @endif
-    {{-- @if (session('status'))
-            <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">
-                {{ session('status') }}
-            </div>
-        @endif --}}
 
     <main class="max-w-5xl min-h-[58vh]  mx-auto px-4 sm:px-6 py-10 space-y-12">
         {{ $slot }}

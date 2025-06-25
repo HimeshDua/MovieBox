@@ -1,23 +1,24 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\SigninController;
-use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
 // home page
 Route::get('/', [HomeController::class, "index"]);
 
-// auth pages
-Route::get('/signin', [SigninController::class, "showlogin"])->name("signin");
-Route::post('/signin', [SigninController::class, "login"]);
+// register
+Route::get('/register', [AuthController::class, "showRegister"])->name("register");
+Route::post('/register', [AuthController::class, "register"]);
 
-Route::post('/signout', [SigninController::class, "signout"])->middleware('auth')->name('signout');
+// login
+Route::get('/login', [AuthController::class, 'showLogin'])->name("login");
+Route::post('/login', [AuthController::class, "login"]);
 
-Route::get('/signup', [SignupController::class, "showRegister"])->name("signup");
-Route::post('/signup', [SignupController::class, "register"]);
+// logout
+Route::post('/logout', [AuthController::class, "logout"])->middleware('auth')->name('logout');
 
 Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");

@@ -1,10 +1,10 @@
 <x-layout>
     <x-slot:title>
-        Sign In - Movie Box
+        Log In - Movie Box
     </x-slot>
     <div class="max-w-md mx-auto mt-10 bg-card p-6 rounded-xl shadow-md space-y-6">
 
-        <h1 class="text-2xl font-bold text-center">Sign In</h1>
+        <h1 class="text-2xl font-bold text-center">Log In</h1>
 
         @if ($errors->any())
             <div class="bg-destructive/10 border border-destructive text-destructive text-sm p-3 rounded-lg">
@@ -16,7 +16,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('signin') }}" class="space-y-4">
+        <form method="POST" action="{{ route('login') }}" class="space-y-4">
             @csrf
 
             <div class="space-y-1">
@@ -33,7 +33,7 @@
 
             <button type="submit"
                 class="w-full py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition">
-                Sign In
+                Log In
             </button>
         </form>
     </div>
