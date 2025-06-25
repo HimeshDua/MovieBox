@@ -85,13 +85,12 @@
         @endif
     </div>
 
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-12">
-
+    <main class="max-w-5xl min-h-[58vh]  mx-auto px-4 sm:px-6 py-10 space-y-12">
         {{ $slot }}
     </main>
 
-    <footer class="mt-12 py-6 bg-card text-center text-sm text-muted-foreground">
-        &copy; {{ date('Y') }} Movie Box. All rights reserved.
+    <footer class="mt-12 py-8 border-t border-border text-center text-sm text-muted-foreground">
+        &copy; {{ date('Y') }} MovieBox. All rights reserved.
     </footer>
 
 </body>

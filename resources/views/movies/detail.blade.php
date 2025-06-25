@@ -114,8 +114,6 @@
         @endif
     </section>
 
-    ---
-
     {{-- RetSection --}}
     <section class="mb-10">
         <h2 class="text-2xl font-bold text-foreground mb-5">Reviews ({{ $movie->reviews->count() }})</h2>

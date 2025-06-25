@@ -15,7 +15,7 @@
                 <div
                     class="flex flex-col sm:flex-row items-stretch bg-card text-card-foreground border border-border rounded-radius shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
 
-                    <div class="w-full sm:w-40 h-60 sm:h-auto bg-muted overflow-hidden">
+                    <div class="w-full sm:w-48 h-60 sm:h-auto bg-muted overflow-hidden">
                         @if ($movie->poster)
                             <img src="{{ $movie->poster }}" alt="{{ $movie->title }}" class="w-full h-full object-cover" />
                         @else

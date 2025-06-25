@@ -73,7 +73,4 @@
 
     </main>
 
-    <footer class="mt-20 py-8 border-t border-border text-center text-sm text-muted-foreground">
-        &copy; {{ date('Y') }} MovieBox. All rights reserved.
-    </footer>
 </x-layout>

@@ -377,8 +377,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -517,6 +517,14 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/Http/Controllers/MovieController.php',
+        'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
+        'App\\Http\\Controllers\\SigninController' => __DIR__ . '/../..' . '/app/Http/Controllers/SigninController.php',
+        'App\\Http\\Controllers\\SignupController' => __DIR__ . '/../..' . '/app/Http/Controllers/SignupController.php',
+        'App\\Models\\Movie' => __DIR__ . '/../..' . '/app/Models/Movie.php',
+        'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
+        'App\\Models\\Show' => __DIR__ . '/../..' . '/app/Models/Show.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -636,6 +644,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\MovieFactory' => __DIR__ . '/../..' . '/database/factories/MovieFactory.php',
+        'Database\\Factories\\ShowFactory' => __DIR__ . '/../..' . '/database/factories/ShowFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

@@ -7,6 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\MovieController' => $baseDir . '/app/Http/Controllers/MovieController.php',
+    'App\\Http\\Controllers\\ReviewController' => $baseDir . '/app/Http/Controllers/ReviewController.php',
+    'App\\Http\\Controllers\\SigninController' => $baseDir . '/app/Http/Controllers/SigninController.php',
+    'App\\Http\\Controllers\\SignupController' => $baseDir . '/app/Http/Controllers/SignupController.php',
+    'App\\Models\\Movie' => $baseDir . '/app/Models/Movie.php',
+    'App\\Models\\Review' => $baseDir . '/app/Models/Review.php',
+    'App\\Models\\Show' => $baseDir . '/app/Models/Show.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -126,6 +134,8 @@ return array(
     'Cron\\HoursField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
     'Cron\\MinutesField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+    'Database\\Factories\\MovieFactory' => $baseDir . '/database/factories/MovieFactory.php',
+    'Database\\Factories\\ShowFactory' => $baseDir . '/database/factories/ShowFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
