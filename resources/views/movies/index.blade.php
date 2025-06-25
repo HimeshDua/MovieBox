@@ -47,7 +47,7 @@
                                 </div>
                                 <div>
                                     <dt class="font-medium text-foreground">Year:</dt>
-                                    <dd>{{ $movie->year ?? '2024' }}</dd>
+                                    <dd>{{ $movie->year ?? '2025' }}</dd>
                                 </div>
                                 <div>
                                     <dt class="font-medium text-foreground">Duration:</dt>
