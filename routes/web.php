@@ -2,34 +2,57 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 // home page
-Route::get('/', [HomeController::class, "index"]);
-Route::post('/logout', [AuthController::class, "logout"])->middleware('auth')->name('logout');
 
-Route::get('/shows', [MovieController::class, "index"])->name("shows.index");
+// Public Routes
+Route::get('/', [HomeController::class, "index"])->name('home');
+
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");
+Route::get('/movies/{movie:slug}', [MovieController::class, "detail"])->name("movies.detail");
 
-// Auth Routes
-Route::middleware('guest')->controller(MovieController::class)->group(function () {
-    Route::get('/register', [AuthController::class, "showRegister"])->name("register");
-    Route::post('/register', [AuthController::class, "register"]);
+Route::get('/shows', [MovieController::class, "index"])->name("shows.index"); // Optional listing
+
+// Guests Routes
+Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name("login");
     Route::post('/login', [AuthController::class, "login"]);
+
+    Route::get('/register', [AuthController::class, "showRegister"])->name("register");
+    Route::post('/register', [AuthController::class, "register"]);
+});
+// Authenticated User Routes
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, "logout"])->name('logout');
+    Route::post('/reviews', [MovieController::class, 'reviewstore'])->name('reviews.store');
+
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
-// Protected Movie Routes
-Route::middleware('auth')->controller(MovieController::class)->group(function () {
-    Route::get('/movies/create', 'create')->name('movies.create');
-    Route::post('/movies', 'store')->name('movies.store');
-    Route::post('/reviews', 'reviewstore')->name('reviews.store');
-});
 
-Route::get('/movies/{movie:slug}', [MovieController::class, 'detail'])->name("movies.detail");
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'show'])->name("dashboard");
 
-Route::middleware('auth', 'admin')->controller(AdminController::class)->group(function () {
-    Route::middleware('auth', 'admin')->get('/dashboard', 'show')->name("dashboard");
+    // Manage Movies
+    Route::get('/movies', [AdminController::class, 'showMovies'])->name("movies.index");
+    Route::get('/movies/create', [AdminController::class, 'createMovie'])->name("movies.create");
+    Route::post('/movies', [AdminController::class, 'storeMovie'])->name("movies.store");
+    Route::get('/movies/{movie}/edit', [AdminController::class, 'editMovie'])->name("movies.edit");
+    Route::put('/movies/{movie}', [AdminController::class, 'updateMovie'])->name("movies.update");
+    Route::delete('/movies/{movie}', [AdminController::class, 'destroyMovie'])->name("movies.destroy");
+
+    // Manage Shows
+    Route::get('/shows', [AdminController::class, 'showShows'])->name("shows.index");
+    Route::get('/shows/create', [AdminController::class, 'createShow'])->name("shows.create");
+    Route::post('/shows', [AdminController::class, 'storeShow'])->name("shows.store");
+    Route::get('/shows/{show}/edit', [AdminController::class, 'editShow'])->name("shows.edit");
+    Route::put('/shows/{show}', [AdminController::class, 'updateShow'])->name("shows.update");
+    Route::delete('/shows/{show}', [AdminController::class, 'destroyShow'])->name("shows.destroy");
+
+    // Manage Users (view only)
+    Route::get('/users', [AdminController::class, 'listUsers'])->name("users.index");
 });

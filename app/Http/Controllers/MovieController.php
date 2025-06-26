@@ -23,22 +23,11 @@ class MovieController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new movie.
-     *
-     * @return \Illuminate\View\View
-     */
     public function create()
     {
         return view('movies.create');
     }
 
-    /**
-     * Store a newly created movie in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([

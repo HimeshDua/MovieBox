@@ -17,7 +17,7 @@
     </nav>
 
     <h1>wow</h1>
-    <div class="hidden bg-card border border-border rounded-2xl shadow-lg p-8">
+    <div class=" bg-card border border-border rounded-2xl shadow-lg p-8">
         <h2 class="text-2xl font-bold text-foreground mb-6">Enter Movie Details</h2>
 
         <form action="{{ route('movies.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
