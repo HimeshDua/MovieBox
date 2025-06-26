@@ -21,41 +21,34 @@
 
             <ul class="flex items-center space-x-6">
                 <li>
-                    <a href="{{ route('movies.index') }}"
-                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                    <a href="{{ route('movies.index') }}" class="btn btn-link">
                         Movies
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('shows.index') }}"
-                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                    <a href="{{ route('shows.index') }}" class="btn btn-link">
                         Shows
                     </a>
                 </li>
-                @auth
-                    @if (Auth::user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}"
-                            class="text-muted-foreground hover:text-foreground transition-colors">Dashboard</a>
-                    @endif
-                @endauth
             </ul>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
                 @auth
-                    <div
-                        class="w-8 h-8 bg-muted text-muted-foreground flex items-center justify-center rounded-full text-sm font-semibold">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <span class="text-sm font-medium text-muted-foreground">
+
+                    <span class="btn btn-outline">
                         {{ Auth::user()->name }}
                     </span>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit"
-                            class="px-3 py-1 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors rounded-md text-sm font-semibold">
-                            Logout
-                        </button>
-                    </form>
+                    {{-- <div class="btn btn-outline rounded-full!">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div> --}}
+
+                    @if (Auth::user()->isAdmin())
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">Dashboard</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-destructive">
+                                Logout
+                            </button>
+                        </form>
+                    @endif
                 @else
                     <a href="{{ route('login') }}"
                         class="text-sm text-muted-foreground hover:text-foreground transition-colors">Log
