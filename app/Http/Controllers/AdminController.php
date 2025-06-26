@@ -20,13 +20,12 @@ class AdminController extends Controller
     }
 
     // Show all movies
-    public function movies()
+    public function showMovies()
     {
         $movies = Movie::latest()->paginate(10);
         return view('admin.movies.index', compact('movies'));
     }
 
-    // Show form to create new movie
     public function createMovie()
     {
         return view('admin.movies.create');
@@ -50,13 +49,19 @@ class AdminController extends Controller
 
         Movie::create($validated);
 
-        return redirect()->route('dashboard')->with('success', 'Movie created successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Movie created successfully.');
     }
 
     // Show edit form for movie
     public function editMovie(Movie $movie)
     {
-        return view('admin.movies.edit', compact('movie'));
+        return view(
+            'admin.movies.edit',
+            [
+                'movie' => $movie,
+                'rout' => $movie->slug,
+            ]
+        );
     }
 
     // Update movie
@@ -88,7 +93,7 @@ class AdminController extends Controller
     }
 
     // Show all shows
-    public function shows()
+    public function showShows()
     {
         $shows = Show::with('movie')->latest()->paginate(10);
         return view('admin.shows.index', compact('shows'));
@@ -116,7 +121,7 @@ class AdminController extends Controller
 
         Show::create($validated);
 
-        return redirect()->route('dashboard')->with('success', 'Show created successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Show created successfully.');
     }
 
     // TODO: Add editShow() and updateShow() methods

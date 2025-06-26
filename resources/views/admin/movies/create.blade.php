@@ -1,26 +1,23 @@
-<x-layout title="Add New Movie | Movie Box" section_title="Add New Movie">
-
+<x-admin-layout title="Add New Movie | Movie Box">
     <nav class="text-sm text-muted-foreground mb-6" aria-label="breadcrumb">
         <ol class="list-none p-0 inline-flex">
             <li class="flex items-center">
-                <a href="/" class="hover:text-primary transition-colors">Home</a>
+                <a href={{ route('admin.dashboard') }} class="hover:text-primary transition-colors">Dashboard</a>
                 <span class="mx-2">/</span>
             </li>
             <li class="flex items-center">
-                <a href="{{ route('movies.index') }}" class="hover:text-primary transition-colors">Movies</a>
-                <span class="mx-2">/</span>
-            </li>
-            <li class="flex items-center">
-                <span class="text-foreground" aria-current="page">Add New Movie</span>
+                <a href="{{ route('admin.movies.create') }}" class="hover:text-primary transition-colors">
+                    <span class="text-foreground" aria-current="page">Add New Movie</span>
+                </a>
             </li>
         </ol>
     </nav>
 
-    <h1>wow</h1>
+
     <div class=" bg-card border border-border rounded-2xl shadow-lg p-8">
         <h2 class="text-2xl font-bold text-foreground mb-6">Enter Movie Details</h2>
 
-        <form action="{{ route('movies.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
+        <form action="{{ route('admin.movies.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
             @csrf
 
             {{-- Display Validation Errors --}}
@@ -162,4 +159,4 @@
         </form>
     </div>
 
-</x-layout>
+</x-admin-layout>

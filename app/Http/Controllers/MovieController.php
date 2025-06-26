@@ -23,11 +23,6 @@ class MovieController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('movies.create');
-    }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
