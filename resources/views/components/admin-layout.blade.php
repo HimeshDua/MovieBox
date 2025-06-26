@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en" class="bg-background text-foreground">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ $title ?? 'Movie Box' }}</title>
+    <title>{{ $title ?? 'Admin Panel' }}</title>
     @vite('resources/css/app.css')
 </head>
 
@@ -14,59 +12,48 @@
 
     <header class="bg-card border-b border-border shadow-sm">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="{{ route('home') }}"
+            <a href="{{ route('admin.dashboard') }}"
                 class="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
-                Movie Box
+                Admin Panel
             </a>
 
             <ul class="flex items-center space-x-6">
                 <li>
-                    <a href="{{ route('movies.index') }}"
+                    <a href="{{ route('admin.movies.index') }}"
                         class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
                         Movies
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('shows.index') }}"
+                    <a href="{{ route('admin.shows.index') }}"
                         class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
                         Shows
                     </a>
                 </li>
-                @auth
-                    @if (Auth::user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}"
-                            class="text-muted-foreground hover:text-foreground transition-colors">Dashboard</a>
-                    @endif
-                @endauth
+                <li>
+                    <a href="{{ route('admin.users.index') }}"
+                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                        Users
+                    </a>
+                </li>
             </ul>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center space-x-4">
                 @auth
-                    <div
-                        class="w-8 h-8 bg-muted text-muted-foreground flex items-center justify-center rounded-full text-sm font-semibold">
-                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                    </div>
-                    <span class="text-sm font-medium text-muted-foreground">
+                    <span class="text-sm text-muted-foreground font-medium">
                         {{ Auth::user()->name }}
                     </span>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit"
-                            class="px-3 py-1 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors rounded-md text-sm font-semibold">
+                            class="px-3 py-1 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors text-sm font-semibold rounded-md">
                             Logout
                         </button>
                     </form>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="text-sm text-muted-foreground hover:text-foreground transition-colors">Log
-                        In</a>
-                    <a href="{{ route('register') }}"
-                        class="text-sm text-muted-foreground hover:text-foreground transition-colors">Register</a>
                 @endauth
             </div>
         </nav>
     </header>
-
 
     @if (session('success'))
         <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
@@ -87,6 +74,7 @@
     <main class="max-w-5xl min-h-[60vh] mx-auto px-4 sm:px-6 py-10 space-y-12">
         {{ $slot }}
     </main>
+
 
     <footer class="mt-12 py-6 border-t border-border text-center text-sm text-muted-foreground">
         &copy; {{ date('Y') }} Movie Box. All rights reserved.

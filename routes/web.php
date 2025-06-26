@@ -7,15 +7,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
-// home page
-
 // Public Routes
 Route::get('/', [HomeController::class, "index"])->name('home');
 
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");
 Route::get('/movies/{movie:slug}', [MovieController::class, "detail"])->name("movies.detail");
 
-Route::get('/shows', [MovieController::class, "index"])->name("shows.index"); // Optional listing
+Route::get('/shows', [MovieController::class, "index"])->name("shows.index");
 
 // Guests Routes
 Route::middleware('guest')->group(function () {
@@ -53,6 +51,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/shows/{show}', [AdminController::class, 'updateShow'])->name("shows.update");
     Route::delete('/shows/{show}', [AdminController::class, 'destroyShow'])->name("shows.destroy");
 
-    // Manage Users (view only)
+    // Manage Users
     Route::get('/users', [AdminController::class, 'listUsers'])->name("users.index");
 });
