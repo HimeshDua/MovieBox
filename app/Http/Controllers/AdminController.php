@@ -111,18 +111,26 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'movie_id' => 'required|exists:movies,id',
-            'platform' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'location' => 'nullable|string|max:255',
             'show_time' => 'required',
             'show_date' => 'required|date',
-            'price' => 'required|numeric|min:0',
+            'class' => 'required|in:Silver,Gold,Platinum',
         ]);
+
+        $priceMap = [
+            'Silver' => 500,
+            'Gold' => 800,
+            'Platinum' => 1200,
+        ];
+
+        $validated['price'] = $priceMap[$validated['class']] ?? 0;
 
         Show::create($validated);
 
         return redirect()->route('admin.dashboard')->with('success', 'Show created successfully.');
     }
+
 
     // TODO: Add editShow() and updateShow() methods
     // TODO: Add deleteShow() method

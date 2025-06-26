@@ -11,15 +11,15 @@ class Show extends Model
     use HasFactory;
 
     protected $fillable = [
-        "platform",
         "location",
         "city",
         "show_time",
         "show_date",
-        "movie_id"
+        "movie_id",
+        "price"
     ];
 
-    public function movies()
+    public function movie()
     {
         return  $this->belongsTo(Movie::class);
     }

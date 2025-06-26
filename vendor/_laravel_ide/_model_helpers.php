@@ -5,7 +5,7 @@ namespace App\Models {
     /**
      * App\Models\Movie
      *
-     * @property string $trailer_url
+     * @property string|null $trailer_url
      * @property string|null $link
      * @property string|null $poster
      * @property mixed $rating
@@ -651,25 +651,27 @@ namespace App\Models {
     /**
      * App\Models\Show
      *
-     * @property mixed $movie_id
-     * @property string|null $show_date
-     * @property string|null $show_time
+     * @property float $price
+     * @property mixed $class
+     * @property string $show_time
+     * @property string $show_date
      * @property string $city
      * @property string|null $location
-     * @property string $platform
+     * @property mixed $movie_id
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property int $id
-     * @property-read \App\Models\Movie $movies
+     * @property-read \App\Models\Movie $movie
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePlatform($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereMovieId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereLocation($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereCity($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereShowTime($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereShowDate($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereMovieId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereShowTime($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereClass($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePrice($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show query()
