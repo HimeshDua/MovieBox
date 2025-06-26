@@ -41,9 +41,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/movies', [AdminController::class, 'showMovies'])->name("movies.index");
     Route::get('/movies/create', [AdminController::class, 'createMovie'])->name("movies.create");
     Route::post('/movies', [AdminController::class, 'storeMovie'])->name("movies.store");
-    Route::get('/movies/{movie}/edit', [AdminController::class, 'editMovie'])->name("movies.edit");
-    Route::put('/movies/{movie}', [AdminController::class, 'updateMovie'])->name("movies.update");
-    Route::delete('/movies/{movie}', [AdminController::class, 'destroyMovie'])->name("movies.destroy");
+    Route::get('/movies/{movie:slug}/edit', [AdminController::class, 'editMovie'])->name("movies.edit");
+    Route::put('/movies/{movie:slug}', [AdminController::class, 'updateMovie'])->name("movies.update");
+    Route::delete('/movies/{movie:slug}', [AdminController::class, 'destroyMovie'])->name("movies.destroy");
 
     // Manage Shows
     Route::get('/shows', [AdminController::class, 'showShows'])->name("shows.index");
