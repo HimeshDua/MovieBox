@@ -165,7 +165,7 @@
             </div>
         @else
             <p class="text-md text-muted-foreground bg-muted p-4 rounded-lg border border-border mb-8">
-                <a href="{{ route('signin') }}" class="text-primary hover:underline font-medium">Sign in</a> to leave a
+                <a href="{{ route('login') }}" class="text-primary hover:underline font-medium">Log in</a> to leave a
                 review for this movie.
             </p>
         @endauth

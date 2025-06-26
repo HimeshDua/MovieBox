@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->string('poster')->nullable();
             $table->string('link', 2048)->nullable();
-            $table->string('trailer_url', 2048);
+            $table->string('trailer_url', 2048)->nullable();
         });
     }
 

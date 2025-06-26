@@ -75,4 +75,23 @@ class MovieController extends Controller
         return redirect()->route('movies.detail', $movie->id)
             ->with('success', 'Movie "' . $movie->title . '" added successfully!');
     }
+
+    public function  reviewstore(Request $req)
+    {
+        $req->validate([
+            'rating' => 'required|integer|min:1|max:10',
+            'comment' => 'required|string|max:500',
+            'movie_id' => 'required|exists:movies,id',
+        ]);
+
+        $movie = Movie::findOrFail($req->movie_id);
+
+        $movie->reviews()->create([
+            'user_id' => auth()->id(),
+            'rating' => $req->rating,
+            'comment' => $req->comment,
+        ]);
+
+        return redirect()->route('movies.detail', $movie->slug)->with('success', 'Review submitted successfully!');
+    }
 }

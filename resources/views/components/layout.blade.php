@@ -27,20 +27,23 @@
                         Movies
                     </a>
                 </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('shows.index') }}"
                         class="text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors px-3 py-1 rounded-md">
                         Shows
                     </a>
                 </li>
+
                 @auth
-                    <li>
-                        <a href="{{ route('dashboard') }}"
-                            class="text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors px-3 py-1 rounded-md">
-                            Dashboard
-                        </a>
-                    </li>
-                @endauth --}}
+                    @if (Auth::user()->isAdmin())
+                        <li>
+                            <a href="{{ route('dashboard') }}"
+                                class="text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors px-3 py-1 rounded-md">
+                                Dashboard
+                            </a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
 
             {{-- User Menu --}}

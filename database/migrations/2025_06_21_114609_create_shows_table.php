@@ -14,12 +14,18 @@ return new class extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("platform"); //  cinema or OTT
+
+            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+
+            $table->string("platform");
             $table->string("location")->nullable();
             $table->string("city");
-            $table->time("show_time")->nullable();
-            $table->date("show_date")->nullable();
-            $table->foreignId("movie_id")->constrained()->onDelete("cascade");
+            $table->date("show_date");
+            $table->time("show_time");
+
+            $table->decimal('price_silver', 8, 2)->default(0);
+            $table->decimal('price_gold', 8, 2)->default(0);
+            $table->decimal('price_platinum', 8, 2)->default(0);
         });
     }
 
