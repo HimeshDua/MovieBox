@@ -2,9 +2,12 @@
     <x-slot:title>
         Log In - Movie Box
     </x-slot>
-    <div class="max-w-md mx-auto mt-10 bg-card p-6 rounded-xl shadow-md space-y-6">
+    <div class="max-w-md mx-auto mt-10 bg-card p-6 rounded-xl border border-gray-400/50 shadow-md space-y-6">
 
-        <h1 class="text-2xl font-bold text-center">Log In</h1>
+        <h1 class="text-3xl font-bold text-center my-2 text-primary tracking-tight">
+            Log In
+        </h1>
+
 
         @if ($errors->any())
             <div class="bg-destructive/10 border border-destructive text-destructive text-sm p-3 rounded-lg">
@@ -31,10 +34,15 @@
                     class="w-full px-3 py-2 border rounded-md bg-background text-foreground border-input focus:outline-none focus:ring-2 focus:ring-ring">
             </div>
 
-            <button type="submit"
-                class="w-full py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition">
+            <button type="submit" class="w-full btn btn-primary">
                 Log In
             </button>
+
+
+            <p class="text-center text-sm text-muted-foreground">
+                Create new account?
+                <a href="{{ route('register') }}" class="text-primary hover:underline">Register</a>
+            </p>
         </form>
     </div>
 </x-layout>

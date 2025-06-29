@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Routing\Controller;
 
 class MovieController extends Controller
 {

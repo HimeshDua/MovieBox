@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::get('/', [HomeController::class, "index"])->name('home');
 
-Route::get('/profile', [ProfileController::class, "index"])->name("profile.index");
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");
 Route::get('/movies/{movie:slug}', [MovieController::class, "detail"])->name("movies.detail");
 
@@ -30,6 +29,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, "logout"])->name('logout');
     Route::post('/reviews', [MovieController::class, 'reviewstore'])->name('reviews.store');
+    Route::get('/profile', [ProfileController::class, "index"])->name("profile.index");
 
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
@@ -55,5 +55,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/shows/{show}', [AdminController::class, 'destroyShow'])->name("shows.destroy");
 
     // Manage Users
-    Route::get('/users', [AdminController::class, 'listUsers'])->name("users.index");
+    Route::get('/customers', [AdminController::class, 'listUsers'])->name("users.index");
 });

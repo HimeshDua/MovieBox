@@ -40,14 +40,48 @@
                     </select>
                 </div>
 
-                {{-- <div>
-                    <label class="block text-sm font-medium mb-2 text-muted-foreground">Platform</label>
-                    <select name="platform" required
-                        class="w-full bg-background border border-border rounded-lg py-2 px-3 text-foreground focus:ring-2 focus:ring-primary">
-                        <option value="cinema" @selected($show->platform == 'cinema')>Cinema</option>
-                        <option value="ott" @selected($show->platform == 'ott')>OTT</option>
-                    </select>
-                </div> --}}
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-px">
+                        <label for="price_silver" class="block text-sm font-semibold text-muted-foreground mb-1">
+                            Silver Class <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-sm text-muted-foreground">Rs</span>
+                            <input type="number" name="price_silver" id="price_silver" step="5" min="500"
+                                value="500"
+                                class="w-full pl-10 pr-3 py-2 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary"
+                                value="{{ old('price_silver') }}" required />
+                        </div>
+                    </div>
+
+                    {{-- Gold --}}
+                    <div class="p-px">
+                        <label for="price_gold" class="block text-sm font-semibold text-muted-foreground mb-1">
+                            Gold Class <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-sm text-muted-foreground">Rs</span>
+                            <input type="number" name="price_gold" id="price_gold" step="5" min="800"
+                                value="800"
+                                class="w-full pl-10 pr-3 py-2 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary"
+                                value="{{ old('price_gold') }}" required />
+                        </div>
+                    </div>
+
+                    {{-- Platinum --}}
+                    <div class="p-px">
+                        <label for="price_platinum" class="block text-sm font-semibold text-muted-foreground mb-1">
+                            Platinum Class <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-2.5 text-sm text-muted-foreground">Rs</span>
+                            <input type="number" name="price_platinum" id="price_platinum" step="5"
+                                min="1200" value="1200"
+                                class="w-full pl-10 pr-3 py-2 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary"
+                                value="{{ old('price_platinum') }}" required />
+                        </div>
+                    </div>
+                </div>
 
                 <div>
                     <label class="block text-sm font-medium mb-2 text-muted-foreground">City</label>
@@ -55,6 +89,7 @@
                         class="w-full bg-background border border-border rounded-lg py-2 px-3 text-foreground focus:ring-2 focus:ring-primary"
                         required />
                 </div>
+
 
 
 

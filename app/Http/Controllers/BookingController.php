@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Movie;
 use App\Models\Show;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class BookingController extends Controller
 {
@@ -48,7 +49,7 @@ class BookingController extends Controller
             'total_price' => $totalPrice,
         ]);
 
-        return redirect()->route('movies.detail')
+        return redirect()->route('profile.index')
             ->with('success', 'Ticket booked successfully!');
     }
 }

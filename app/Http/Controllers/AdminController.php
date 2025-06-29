@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\Show;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
@@ -55,13 +56,7 @@ class AdminController extends Controller
     // Show edit form for movie
     public function editMovie(Movie $movie)
     {
-        return view(
-            'admin.movies.edit',
-            [
-                'movie' => $movie,
-                'rout' => $movie->slug,
-            ]
-        );
+        return view('admin.movies.edit', compact('movie'));
     }
 
     // Update movie
@@ -86,7 +81,7 @@ class AdminController extends Controller
     }
 
     // Delete movie
-    public function deleteMovie(Movie $movie)
+    public function destroyMovie(Movie $movie)
     {
         $movie->delete();
         return back()->with('success', 'Movie deleted.');
@@ -125,9 +120,47 @@ class AdminController extends Controller
         return redirect()->route('admin.shows.index')->with('success', 'Show created successfully.');
     }
 
+    // Edit form for show 
+    public function editShow(Show $show)
+    {
+        $movies = Movie::latest()->get();
+        return view('admin.shows.edit', ['show' => $show, 'movies' => $movies]);
+    }
 
-    // TODO: Add editShow() and updateShow() methods
-    // TODO: Add deleteShow() method
-    // TODO: Add admin user management (list, promote/demote roles, etc.)
+    // Update show
+    public function updateShow(Request $request, Show $show)
+    {
+        $validated = $request->validate([
+            'movie_id' => 'required|exists:movies,id',
+            'city' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'show_time' => 'required',
+            'show_date' => 'required|date',
+            'price_silver' => 'required',
+            'price_gold' => 'required',
+            'price_platinum' => 'required',
+        ]);
+
+        $show->update($validated);
+
+        return redirect()->route('admin.shows.index')->with('success', 'Show updated successfully.');
+    }
+
+    // Delete Show
+    public function destroyShow(Show $show)
+    {
+        $show->delete();
+        return back()->with('success', 'Show deleted.');
+    }
+
+    // listUsers
+    public function listUsers()
+    {
+        $users =  User::latest()->get();
+        return view('admin.users.index', compact('users'));
+    }
+
+
+
     // TODO: Add analytics page (e.g., top movies, total sales, etc.)
 }

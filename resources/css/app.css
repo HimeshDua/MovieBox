@@ -97,7 +97,7 @@
         border-width: 1px;
         border-style: solid;
         cursor: pointer;
-        padding: 0.3rem 0.75rem;
+        padding: 0.45rem 0.75rem;
     }
     .btn:disabled,
     .btn[disabled] {

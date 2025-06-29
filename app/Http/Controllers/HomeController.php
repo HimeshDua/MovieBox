@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
 {
     public function index()
-{
-    $nowShowing = Movie::where('year', '<=', now()->year)->latest()->take(6)->get();
-    $comingSoon = Movie::where('year', '>', now()->year)->orWhereNull('year')->take(6)->get();
+    {
+        $nowShowing = Movie::where('year', '<=', now()->year)->latest()->take(6)->get();
+        $comingSoon = Movie::where('year', '>', now()->year)->orWhereNull('year')->take(6)->get();
 
-    return view('home', compact('nowShowing', 'comingSoon'));
-}
-
+        return view('home', compact('nowShowing', 'comingSoon'));
+    }
 }

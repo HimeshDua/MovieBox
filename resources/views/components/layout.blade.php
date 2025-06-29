@@ -51,11 +51,9 @@
                         </button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}"
-                        class="text-sm text-muted-foreground hover:text-foreground transition-colors">Log
+                    <a href="{{ route('login') }}" class="btn btn-link">Log
                         In</a>
-                    <a href="{{ route('register') }}"
-                        class="text-sm text-muted-foreground hover:text-foreground transition-colors">Register</a>
+                    <a href="{{ route('register') }}" class="btn btn-link">Register</a>
                 @endauth
             </div>
         </nav>

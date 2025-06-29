@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\Show;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ShowController extends Controller
 {

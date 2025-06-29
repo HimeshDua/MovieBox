@@ -16,6 +16,9 @@ class Show extends Model
         "show_time",
         "show_date",
         "movie_id",
+        "price_silver",
+        "price_gold",
+        "price_platinum",
         "price"
     ];
 

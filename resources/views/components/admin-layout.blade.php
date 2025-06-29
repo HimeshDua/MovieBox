@@ -18,21 +18,9 @@
             </a>
 
             <ul class="flex items-center space-x-6">
-                <li>
-                    <a href="{{ route('admin.movies.index') }}" class="btn btn-link">
-                        Movies
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.shows.index') }}" class="btn btn-link">
-                        Shows
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-link">
-                        Users
-                    </a>
-                </li>
+                <li> <a href="{{ route('admin.movies.index') }}" class="btn btn-link">Movies</a></li>
+                <li> <a href="{{ route('admin.shows.index') }}" class="btn btn-link"> Shows</a></li>
+                <li> <a href="{{ route('admin.users.index') }}" class="btn btn-link"> Customers </a></li>
             </ul>
 
             <div class="flex items-center space-x-2">

@@ -25,7 +25,6 @@
                 <thead class="bg-muted text-muted-foreground">
                     <tr>
                         <th class="px-4 py-3">Movie</th>
-                        <th class="px-4 py-3">Platform</th>
                         <th class="px-4 py-3">City</th>
                         <th class="px-4 py-3">Location</th>
                         <th class="px-4 py-3">Show Date</th>
@@ -39,21 +38,19 @@
                             <td class="px-4 py-3 font-medium text-foreground">
                                 {{ $show->movie->title }}
                             </td>
-                            <td class="px-4 py-3">{{ ucfirst($show->platform) }}</td>
                             <td class="px-4 py-3">{{ $show->city }}</td>
                             <td class="px-4 py-3">{{ $show->location ?? '-' }}</td>
                             <td class="px-4 py-3">{{ \Carbon\Carbon::parse($show->show_date)->format('d M Y') }}</td>
                             <td class="px-4 py-3">{{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</td>
-                            <td class="px-4 py-3 space-x-2">
+                            <td class="px-4 py-3 space-x-1 space-y-2">
                                 <a href="{{ route('admin.shows.edit', $show->id) }}"
-                                    class="btn btn-outline text-xs">Edit</a>
+                                    class="w-full btn btn-outline text-xs">Edit</a>
 
                                 <form action="{{ route('admin.shows.destroy', $show->id) }}" method="POST"
-                                    class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this show?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-destructive text-xs">Delete</button>
+                                    <button type="submit" class="w-full  btn btn-destructive text-xs">Delete</button>
                                 </form>
                             </td>
                         </tr>
