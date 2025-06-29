@@ -25,7 +25,6 @@
         </div>
 
         {{-- Quick Actions  pleae work --}}
-        {{-- blahb blah blh --}}
         <div class="mt-10 space-y-4">
             <h2 class="text-lg font-semibold text-foreground">Quick Actions</h2>
             <div class="flex flex-wrap gap-4">
