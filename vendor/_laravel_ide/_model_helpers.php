@@ -15,7 +15,7 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property int $id
-     * @property-read \App\Models\Movie $movie
+     * @property-read \App\Models\Show $show
      * @method static \Illuminate\Database\Eloquent\Builder<Booking>|Booking whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Booking>|Booking whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Booking>|Booking whereUpdatedAt($value)
@@ -972,7 +972,9 @@ namespace App\Models {
      * App\Models\Show
      *
      * @property float $price
-     * @property mixed $class
+     * @property float $price_platinum
+     * @property float $price_gold
+     * @property float $price_silver
      * @property string $show_time
      * @property string $show_date
      * @property string $city
@@ -982,6 +984,8 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property int $id
      * @property-read \App\Models\Movie $movie
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Booking> $bookings
+     * @property-read int|null $bookings_count
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereUpdatedAt($value)
@@ -990,7 +994,9 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereCity($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereShowDate($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereShowTime($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show whereClass($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePriceSilver($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePriceGold($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePricePlatinum($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show wherePrice($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Show>|Show newQuery()

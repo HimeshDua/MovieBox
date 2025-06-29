@@ -42,7 +42,7 @@ class AdminController extends Controller
             'duration' => 'nullable|integer',
             'year' => 'nullable|integer',
             'rating' => 'nullable|numeric|min:0|max:10',
-            'poster' => 'nullable|url',
+            'poster' => 'nullable',
             'link' => 'nullable|url',
             'trailer_url' => 'required|url',
         ]);
@@ -115,20 +115,14 @@ class AdminController extends Controller
             'location' => 'nullable|string|max:255',
             'show_time' => 'required',
             'show_date' => 'required|date',
-            'class' => 'required|in:Silver,Gold,Platinum',
+            'price_silver' => 'required',
+            'price_gold' => 'required',
+            'price_platinum' => 'required',
         ]);
-
-        $priceMap = [
-            'Silver' => 500,
-            'Gold' => 800,
-            'Platinum' => 1200,
-        ];
-
-        $validated['price'] = $priceMap[$validated['class']] ?? 0;
 
         Show::create($validated);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Show created successfully.');
+        return redirect()->route('admin.shows.index')->with('success', 'Show created successfully.');
     }
 
 

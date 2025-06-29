@@ -120,8 +120,6 @@
                 <p class="mt-1 text-xs text-muted-foreground">Recommended: High-resolution image (e.g., JPG, PNG).</p>
                 <div
                     class="mt-4 w-48 h-auto bg-muted rounded-lg overflow-hidden flex items-center justify-center border border-border shadow-sm">
-                    <img id="poster-preview" src="{{ asset('path/to/default-placeholder.jpg') }}"
-                        alt="Poster Preview" class="w-full h-full object-cover">
                     <span id="poster-placeholder" class="text-muted-foreground text-sm p-4 hidden">No image
                         selected</span>
                 </div>
@@ -137,11 +135,11 @@
                             preview.classList.remove('hidden');
                             placeholder.classList.add('hidden');
                         } else {
-                            preview.src = "{{ asset('path/to/default-placeholder.jpg') }}"; // Or a data URL for a blank image
                             preview.classList.add('hidden');
                             placeholder.classList.remove('hidden');
                         }
                     });
+
                     // Initialize if there's no file by default (hide preview, show placeholder)
                     if (!document.getElementById('poster').files[0]) {
                         document.getElementById('poster-preview').classList.add('hidden');
@@ -149,7 +147,6 @@
                     }
                 </script>
             </div>
-
 
             {{-- Submit Button --}}
             <button type="submit"

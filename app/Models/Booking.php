@@ -19,8 +19,8 @@ class Booking extends Model
         'total_price',
     ];
 
-    public function movie()
+    public function show()
     {
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(Show::class);
     }
 }

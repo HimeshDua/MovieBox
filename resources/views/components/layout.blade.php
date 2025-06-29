@@ -34,10 +34,11 @@
 
             <div class="flex items-center space-x-2">
                 @auth
-
-                    <span class="btn btn-outline">
-                        {{ Auth::user()->name }}
-                    </span>
+                    <a href="{{ route('profile.index') }}">
+                        <span class="btn btn-outline">
+                            {{ Auth::user()->name }}
+                        </span>
+                    </a>
                     {{-- <div class="btn btn-outline rounded-full!">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div> --}}
 
                     @if (Auth::user()->isAdmin())

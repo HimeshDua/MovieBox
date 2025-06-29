@@ -48,7 +48,7 @@ class BookingController extends Controller
             'total_price' => $totalPrice,
         ]);
 
-        return redirect()->route('movies.detail', $show->movie_id)
+        return redirect()->route('movies.detail')
             ->with('success', 'Ticket booked successfully!');
     }
 }

@@ -37,9 +37,12 @@
 
             <div class="flex items-center space-x-2">
                 @auth
-                    <span class="btn btn-outline">
-                        {{ Auth::user()->name }}
-                    </span>
+                    <a href="{{ route('profile.index') }}">
+                        <span class="btn btn-outline">
+                            {{ Auth::user()->name }}
+                        </span>
+                    </a>
+
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">Dashboard</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

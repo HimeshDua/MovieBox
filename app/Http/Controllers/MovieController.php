@@ -10,7 +10,7 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $movies = Movie::orderBy("updated_at", "desc")->paginate(6);
+        $movies = Movie::orderByDesc('updated_at')->paginate(6);
         return view("movies.index", ["movies" => $movies]);
     }
 
@@ -56,7 +56,7 @@ class MovieController extends Controller
             'poster'      => $posterPath,
         ]);
 
-        return redirect()->route('movies.detail', $movie->id)
+        return redirect()->route('movies.detail', $movie->slug)
             ->with('success', 'Movie "' . $movie->title . '" added successfully!');
     }
 

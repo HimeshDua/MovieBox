@@ -5,15 +5,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
 Route::get('/', [HomeController::class, "index"])->name('home');
 
+Route::get('/profile', [ProfileController::class, "index"])->name("profile.index");
 Route::get('/movies', [MovieController::class, "index"])->name("movies.index");
 Route::get('/movies/{movie:slug}', [MovieController::class, "detail"])->name("movies.detail");
 
-Route::get('/shows', [MovieController::class, "index"])->name("shows.index");
+Route::get('/shows', [ShowController::class, "index"])->name("shows.index");
 
 // Guests Routes
 Route::middleware('guest')->group(function () {
