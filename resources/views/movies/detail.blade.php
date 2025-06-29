@@ -94,51 +94,60 @@
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($movie->shows as $show)
-                    <form class="bg-card rounded-xl p-5 border border-border shadow-sm"
-                        action="{{ route('bookings.store') }}" method="POST">
-                        @csrf
+                    @auth
+                        <form class="bg-card  rounded-xl p-5 border border-border shadow-sm"
+                            action="{{ route('bookings.store') }}" method="POST">
+                        @else
+                            <form class="bg-card  rounded-xl p-5 border border-border shadow-sm"
+                                action="{{ route('bookings.store') }}" method="POST">
+                            @endauth
+                            @csrf
 
-                        {{-- Hidden Inputs --}}
-                        <input type="hidden" name="show_id" value="{{ $show->id }}">
+                            {{-- Hidden Inputs --}}
+                            <input type="hidden" name="show_id" value="{{ $show->id }}">
 
-                        <p class="text-lg font-semibold text-foreground mb-2">🎬 {{ $movie->title }}</p>
+                            <p class="text-lg font-semibold text-foreground mb-2">🎬 {{ $movie->title }}</p>
 
-                        <div class="text-sm text-muted-foreground space-y-1 mb-3">
-                            <p><span class="font-medium text-foreground">City:</span> {{ $show->city }}</p>
-                            <p><span class="font-medium text-foreground">Location:</span>
-                                {{ $show->location ?? 'N/A' }}</p>
-                            <p><span class="font-medium text-foreground">Date:</span>
-                                {{ \Carbon\Carbon::parse($show->show_date)->format('M d, Y') }}</p>
-                            <p><span class="font-medium text-foreground">Time:</span>
-                                {{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</p>
-                        </div>
+                            <div class="text-sm text-muted-foreground space-y-1 mb-3">
+                                <p><span class="font-medium text-foreground">City:</span> {{ $show->city }}</p>
+                                <p><span class="font-medium text-foreground">Location:</span>
+                                    {{ $show->location ?? 'N/A' }}</p>
+                                <p><span class="font-medium text-foreground">Date:</span>
+                                    {{ \Carbon\Carbon::parse($show->show_date)->format('M d, Y') }}</p>
+                                <p><span class="font-medium text-foreground">Time:</span>
+                                    {{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</p>
+                            </div>
 
-                        {{-- Class Selection --}}
-                        <label for="class_type" class="block text-sm font-medium text-muted-foreground mb-1">Select
-                            Class</label>
-                        <select name="class_type" id="class_type"
-                            class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3">
-                            <option value="Silver">Silver - Rs {{ $show->price_silver }}</option>
-                            <option value="Gold">Gold - Rs {{ $show->price_gold }}</option>
-                            <option value="Platinum">Platinum - Rs {{ $show->price_platinum }}</option>
-                        </select>
+                            {{-- Class Selection --}}
+                            <label for="class_type" class="block text-sm font-medium text-muted-foreground mb-1">Select
+                                Class</label>
+                            <select name="class_type" id="class_type"
+                                class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3">
+                                <option value="Silver">Silver - Rs {{ $show->price_silver }}</option>
+                                <option value="Gold">Gold - Rs {{ $show->price_gold }}</option>
+                                <option value="Platinum">Platinum - Rs {{ $show->price_platinum }}</option>
+                            </select>
 
-                        {{-- Quantity --}}
-                        <label for="quantity"
-                            class="block text-sm font-medium text-muted-foreground mb-1">Tickets</label>
-                        <input type="number" name="quantity" id="quantity" min="1" value="1"
-                            class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3"
-                            required>
+                            {{-- Quantity --}}
+                            <label for="quantity"
+                                class="block text-sm font-medium text-muted-foreground mb-1">Tickets</label>
+                            <input type="number" name="quantity" id="quantity" min="1" value="1"
+                                class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3"
+                                required>
 
-                        {{-- Is Kid --}}
-                        <label class="inline-flex items-center space-x-2 text-sm text-muted-foreground mb-3">
-                            <input type="checkbox" name="is_kid" class="rounded border-border">
-                            <span>Booking for a kid (3–12 years)?</span>
-                        </label>
+                            {{-- Is Kid --}}
+                            <label class="inline-flex items-center space-x-2 text-sm text-muted-foreground mb-3">
+                                <input type="checkbox" name="is_kid" class="rounded border-border">
+                                <span>Booking for a kid (3–12 years)?</span>
+                            </label>
 
-                        {{-- Submit --}}
-                        <button type="submit" class="btn btn-primary w-full mt-2">Book Now</button>
-                    </form>
+                            {{-- Submit --}}
+                            @auth
+                                <button type="submit" class="btn btn-primary w-full mt-2">Book Now</button>
+                            @else
+                                <button type="submit" disabled class="btn btn-primary w-full mt-2">Book Now</button>
+                            @endauth
+                        </form>
                 @endforeach
             </div>
         @endif

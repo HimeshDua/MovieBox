@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'show'])->name("dashboard");
 
     // Manage Movies

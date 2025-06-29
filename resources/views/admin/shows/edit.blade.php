@@ -40,14 +40,14 @@
                     </select>
                 </div>
 
-                <div>
+                {{-- <div>
                     <label class="block text-sm font-medium mb-2 text-muted-foreground">Platform</label>
                     <select name="platform" required
                         class="w-full bg-background border border-border rounded-lg py-2 px-3 text-foreground focus:ring-2 focus:ring-primary">
                         <option value="cinema" @selected($show->platform == 'cinema')>Cinema</option>
                         <option value="ott" @selected($show->platform == 'ott')>OTT</option>
                     </select>
-                </div>
+                </div> --}}
 
                 <div>
                     <label class="block text-sm font-medium mb-2 text-muted-foreground">City</label>
