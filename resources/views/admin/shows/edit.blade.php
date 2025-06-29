@@ -56,6 +56,8 @@
                         required />
                 </div>
 
+
+
                 <div>
                     <label class="block text-sm font-medium mb-2 text-muted-foreground">Location</label>
                     <input type="text" name="location" value="{{ $show->location }}"

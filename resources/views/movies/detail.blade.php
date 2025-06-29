@@ -94,10 +94,16 @@
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($movie->shows as $show)
-                    <div
-                        class="bg-card rounded-xl p-5 border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02] hover:shadow-md">
-                        <p class="text-lg font-semibold text-foreground mb-2">{{ $show->platform }}</p>
-                        <div class="text-sm text-muted-foreground space-y-1">
+                    <form class="bg-card rounded-xl p-5 border border-border shadow-sm"
+                        action="{{ route('bookings.store') }}" method="POST">
+                        @csrf
+
+                        {{-- Hidden Inputs --}}
+                        <input type="hidden" name="show_id" value="{{ $show->id }}">
+
+                        <p class="text-lg font-semibold text-foreground mb-2">🎬 {{ $movie->title }}</p>
+
+                        <div class="text-sm text-muted-foreground space-y-1 mb-3">
                             <p><span class="font-medium text-foreground">City:</span> {{ $show->city }}</p>
                             <p><span class="font-medium text-foreground">Location:</span>
                                 {{ $show->location ?? 'N/A' }}</p>
@@ -106,9 +112,33 @@
                             <p><span class="font-medium text-foreground">Time:</span>
                                 {{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</p>
                         </div>
-                        {{-- Add a "Book Now" button if applicable --}}
-                        {{-- <a href="#" class="mt-4 inline-block text-center py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm">Book Now</a> --}}
-                    </div>
+
+                        {{-- Class Selection --}}
+                        <label for="class_type" class="block text-sm font-medium text-muted-foreground mb-1">Select
+                            Class</label>
+                        <select name="class_type" id="class_type"
+                            class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3">
+                            <option value="Silver">Silver - Rs {{ $show->price_silver }}</option>
+                            <option value="Gold">Gold - Rs {{ $show->price_gold }}</option>
+                            <option value="Platinum">Platinum - Rs {{ $show->price_platinum }}</option>
+                        </select>
+
+                        {{-- Quantity --}}
+                        <label for="quantity"
+                            class="block text-sm font-medium text-muted-foreground mb-1">Tickets</label>
+                        <input type="number" name="quantity" id="quantity" min="1" value="1"
+                            class="w-full mb-3 rounded-lg border border-border bg-background text-foreground py-2 px-3"
+                            required>
+
+                        {{-- Is Kid --}}
+                        <label class="inline-flex items-center space-x-2 text-sm text-muted-foreground mb-3">
+                            <input type="checkbox" name="is_kid" class="rounded border-border">
+                            <span>Booking for a kid (3–12 years)?</span>
+                        </label>
+
+                        {{-- Submit --}}
+                        <button type="submit" class="btn btn-primary w-full mt-2">Book Now</button>
+                    </form>
                 @endforeach
             </div>
         @endif
@@ -157,8 +187,7 @@
                         </div>
                     </div>
 
-                    <button type="submit"
-                        class="w-full py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors duration-200 ease-in-out font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                    <button type="submit" class="w-full py-2! btn btn-primary">
                         Submit Review
                     </button>
                 </form>

@@ -21,6 +21,11 @@ class AuthController extends Controller
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
+        $isAdmin = User::count();
+
+        if ($isAdmin === 0) {
+            $credentials['role'] = 'admin';
+        }
 
         $user = User::create($credentials);
         Auth::login($user);

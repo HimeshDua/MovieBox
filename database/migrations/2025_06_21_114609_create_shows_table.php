@@ -21,7 +21,10 @@ return new class extends Migration
             $table->date('show_date');
             $table->time('show_time');
 
-            $table->enum('class', ['Silver', 'Gold', 'Platinum']);
+            $table->decimal('price_silver', 8, 2)->default(0);
+            $table->decimal('price_gold', 8, 2)->default(0);
+            $table->decimal('price_platinum', 8, 2)->default(0);
+
             $table->decimal('price', 8, 2)->default(0);
         });
     }

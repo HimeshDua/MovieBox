@@ -19,34 +19,31 @@
 
             <ul class="flex items-center space-x-6">
                 <li>
-                    <a href="{{ route('admin.movies.index') }}"
-                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                    <a href="{{ route('admin.movies.index') }}" class="btn btn-link">
                         Movies
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.shows.index') }}"
-                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                    <a href="{{ route('admin.shows.index') }}" class="btn btn-link">
                         Shows
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.users.index') }}"
-                        class="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-link">
                         Users
                     </a>
                 </li>
             </ul>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2">
                 @auth
-                    <span class="text-sm text-muted-foreground font-medium">
+                    <span class="btn btn-outline">
                         {{ Auth::user()->name }}
                     </span>
-                    <form action="{{ route('logout') }}" method="POST">
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">Dashboard</a>
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit"
-                            class="px-3 py-1 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 transition-colors text-sm font-semibold rounded-md">
+                        <button type="submit" class="btn btn-destructive">
                             Logout
                         </button>
                     </form>
@@ -54,7 +51,6 @@
             </div>
         </nav>
     </header>
-
     @if (session('success'))
         <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
             <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">

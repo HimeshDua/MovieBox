@@ -68,7 +68,7 @@
                 <div>
                     <label for="rating" class="block text-sm font-medium text-muted-foreground mb-2">Rating (out of
                         10) <span class="text-red-500">*</span></label>
-                    <input type="number" name="rating" id="rating" step="0.1" min="0" max="10"
+                    <input type="number" name="rating" id="rating" step="0.1" min="1" max="10"
                         class="w-full rounded-lg border border-border bg-background text-foreground py-2 px-3 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
                         value="{{ old('rating') }}" required placeholder="e.g., 8.7">
                 </div>

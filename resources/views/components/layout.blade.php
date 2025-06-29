@@ -32,7 +32,7 @@
                 </li>
             </ul>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center space-x-2">
                 @auth
 
                     <span class="btn btn-outline">
@@ -42,13 +42,13 @@
 
                     @if (Auth::user()->isAdmin())
                         <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">Dashboard</a>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-destructive">
-                                Logout
-                            </button>
-                        </form>
                     @endif
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-destructive">
+                            Logout
+                        </button>
+                    </form>
                 @else
                     <a href="{{ route('login') }}"
                         class="text-sm text-muted-foreground hover:text-foreground transition-colors">Log
