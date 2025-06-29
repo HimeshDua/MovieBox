@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Movie>
@@ -17,15 +18,16 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->catchPhrase(), 
-            'description' => fake()->paragraph(),
-            'rating' => fake()->randomFloat(1, 1, 10),
-            'poster' => "https://placehold.co/300x450/png",
-            'link' => fake()->url(),
-            'category' => fake()->randomElement(['Action', 'Drama', 'Comedy', 'Thriller', 'Sci-Fi', 'Romance']),
-            'language' => fake()->randomElement(['English', 'Urdu', 'Hindi', 'Spanish', 'French']),
-            'duration' => fake()->numberBetween(80, 180),
-            'year' => fake()->numberBetween(1990, now()->year),
+            'title' => fake()->unique()->words(3, true),
+            'description' => fake()->paragraph(3),
+            'link' => fake()->optional()->url(),
+            'rating' => fake()->randomFloat(1, 4, 10),
+            'poster' => 'poster.jpg',
+            'category' => fake()->randomElement(['Action', 'Drama', 'Sci-Fi', 'Romance', 'Comedy']),
+            'language' => fake()->randomElement(['English', 'Urdu', 'Hindi', 'Spanish']),
+            'duration' => fake()->numberBetween(90, 180),
+            'year' => fake()->year(),
+            'trailer_url' => 'https://www.youtube.com/embed/' . Str::random(11),
         ];
     }
 }

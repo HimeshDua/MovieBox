@@ -22,8 +22,8 @@
         {{-- Poster --}}
         <div class="w-full md:w-80 h-auto md:h-[450px] bg-muted rounded-xl overflow-hidden flex-shrink-0 shadow-md">
             @if ($movie->poster)
-                <img src="{{ $movie->poster }}" alt="{{ $movie->title }} Poster" class="w-full h-full object-cover"
-                    loading="lazy" />
+                <img src="{{ asset('/posters/' . $movie->poster) }}" alt="{{ $movie->title }} Poster"
+                    class="w-full h-full object-cover" loading="lazy" />
             @else
                 <div class="w-full h-full flex items-center justify-center text-muted-foreground text-lg font-medium">
                     No Poster Available
@@ -31,7 +31,6 @@
             @endif
         </div>
 
-        {{-- Details --}}
         <div class="flex-1 flex flex-col justify-between h-full">
             <div class="space-y-5">
                 <h1 class="text-4xl font-extrabold text-primary leading-tight">{{ $movie->title }}</h1>
@@ -99,6 +98,7 @@
                         @csrf
 
                         <input type="hidden" name="show_id" value="{{ $show->id }}">
+                        <input type="hidden" name="is_kid" value="0">
 
                         <h3 class="text-xl font-semibold text-foreground mb-2">🎬 {{ $movie->title }}</h3>
 
@@ -132,7 +132,7 @@
                         </div>
 
                         <label class="inline-flex items-center space-x-2 text-sm text-muted-foreground">
-                            <input type="checkbox" name="is_kid" class="rounded border-border">
+                            <input type="checkbox" name="is_kid" value="1" class="rounded border-border">
                             <span>Booking for a kid (3–12 years)?</span>
                         </label>
 

@@ -12,7 +12,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::orderByDesc('updated_at')->paginate(6);
-        return view("movies.index", ["movies" => $movies]);
+        return view("movies.index", compact('movies'));
     }
 
     public function detail(Movie $movie)

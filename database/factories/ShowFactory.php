@@ -22,12 +22,14 @@ class ShowFactory extends Factory
     public function definition(): array
     {
         return [
-            'platform' => fake()->randomElement(['Cinema', 'OTT']),
-            'location' => fake()->optional()->streetAddress(),
+            'movie_id' => \App\Models\Movie::factory(),
+            'location' => fake()->company() . ' Cinema',
             'city' => fake()->city(),
-            'show_date' => fake()->dateTimeBetween('now', '+2 months')->format('Y-m-d'),
-            'show_time' => fake()->time('H:i:s'),
-            'movie_id' => Movie::inRandomOrder()->first()?->id ?? Movie::factory(),
+            'show_date' => fake()->dateTimeBetween('now', '+1 month')->format('Y-m-d'),
+            'show_time' => fake()->time('H:i'),
+            'price_silver' => fake()->randomFloat(2, 200, 400),
+            'price_gold' => fake()->randomFloat(2, 400, 600),
+            'price_platinum' => fake()->randomFloat(2, 600, 800),
         ];
     }
 }

@@ -1,76 +1,89 @@
 <x-layout>
-    {{-- <main class="space-y-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"> --}}
-
     <x-slot:title>
-        Discover - Movie Box
+        MovieBox | Book Tickets Online
     </x-slot>
 
-
-    <section class="text-center py-16 sm:py-24 bg-card rounded-2xl shadow-lg">
-        <h1 class="text-4xl sm:text-5xl font-bold text-primary mb-4">Welcome to MovieBox</h1>
-        <p class="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Book tickets for the latest blockbusters and upcoming films. Seamless booking. Instant access.
-        </p>
-        <div class="mt-6 flex justify-center gap-4">
-            <a href="{{ route('movies.index') }}"
-                class="px-6 py-2 bg-primary text-primary-sforeground rounded-md hover:opacity-90 transition">Browse
-                Movies</a>
-            <a href="#coming-soon" class="px-6 py-2 border border-border rounded-md hover:bg-muted transition">Coming
-                Soon</a>
-        </div>
+    <section class="relative bg-primary text-primary-foreground py-20 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Welcome to MovieBox</h1>
+        <p class="text-lg md:text-xl mb-8">Watch trailers, explore movies, and book your favorite shows with ease.</p>
+        <a href="{{ route('shows.index') }}" class="btn btn-secondary">🎟 Browse Shows</a>
     </section>
 
-    <section>
-        <h2 class="text-3xl font-semibold mb-6 text-primary">Now Showing</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            @foreach ($nowShowing as $movie)
-                <div
-                    class="bg-card text-card-foreground border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                    <img src="{{ $movie->poster }}" alt="{{ $movie->title }}" class="w-full h-64 object-cover">
-                    <div class="p-4 space-y-2">
-                        <h3 class="text-xl font-semibold">{{ $movie->title }}</h3>
-                        <p class="text-sm text-muted-foreground line-clamp-2">{{ $movie->description }}</p>
-                        <div class="text-sm text-yellow-500">⭐ {{ $movie->rating }}/10</div>
+    <section class="py-16 px-6 bg-background">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6 text-foreground">🎬 Now Showing</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                @foreach ($nowShowing as $movie)
+                    <div
+                        class="group bg-card rounded-xl shadow-md overflow-hidden border border-border hover:shadow-lg transition duration-200">
+                        <div class="relative">
+                            <img src="{{ asset('/posters/' . ($movie->poster ?? 'placeholder.png')) }}"
+                                alt="{{ $movie->title }}"
+                                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                            <div
+                                class="absolute top-2 left-2 bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded">
+                                ⭐ {{ $movie->rating }}/10
+                            </div>
+                        </div>
+
+                        <div class="p-4 space-y-2">
+                            <h3 class="text-lg font-semibold text-foreground">{{ $movie->title }}</h3>
+                            <p class="text-sm text-muted-foreground line-clamp-2">
+                                {{ Str::limit($movie->description, 90) }}
+                            </p>
+
+                            <div class="flex justify-between items-center pt-2">
+                                <span class="text-xs text-muted-foreground">
+                                    {{ $movie->duration ?? 120 }} min · {{ $movie->language ?? 'English' }}
+                                </span>
+                                <a href="{{ route('movies.detail', $movie->slug) }}"
+                                    class="text-sm text-primary hover:underline font-medium">Details</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </section>
 
-    <section id="coming-soon">
-        <h2 class="text-3xl font-semibold mb-6 text-primary">Coming Soon</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            @foreach ($comingSoon as $movie)
-                <div class="bg-muted text-foreground border border-border rounded-xl overflow-hidden shadow-sm">
-                    <div class="relative">
-                        <img src="{{ $movie->poster }}" alt="{{ $movie->title }}"
-                            class="w-full h-64 object-cover grayscale opacity-70">
+    @if ($topRatedMovies->count())
+        <section class="py-16 px-6 bg-muted/20">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-foreground">🔥 Top Rated Movies</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach ($topRatedMovies as $movie)
                         <div
-                            class="absolute inset-0 flex items-center justify-center text-xl font-bold text-muted-foreground bg-black/40">
-                            Coming Soon</div>
-                    </div>
-                    <div class="p-4 space-y-2">
-                        <h3 class="text-lg font-semibold">{{ $movie->title }}</h3>
-                        <p class="text-sm text-muted-foreground">{{ $movie->year ?? 'TBA' }}</p>
-                    </div>
+                            class="group bg-card rounded-xl shadow-md overflow-hidden border border-border hover:shadow-lg transition duration-200">
+                            <div class="relative">
+                                <img src="{{ asset('/posters/' . ($movie->poster ?? 'placeholder.png')) }}"
+                                    alt="{{ $movie->title }}"
+                                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                                <div
+                                    class="absolute top-2 left-2 bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded">
+                                    ⭐ {{ $movie->rating }}/10
+                                </div>
+                            </div>
+
+                            <div class="p-4 space-y-2">
+                                <h3 class="text-lg font-semibold text-foreground">{{ $movie->title }}</h3>
+                                <p class="text-sm text-muted-foreground line-clamp-2">
+                                    {{ Str::limit($movie->description, 90) }}
+                                </p>
+
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-xs text-muted-foreground">
+                                        {{ $movie->duration ?? 120 }} min · {{ $movie->language ?? 'English' }}
+                                    </span>
+                                    <a href="{{ route('movies.detail', $movie->slug) }}"
+                                        class="text-sm text-primary hover:underline font-medium">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
-    </section>
-
-    <section
-        class="bg-secondary text-secondary-foreground rounded-xl p-8 flex flex-col items-center text-center space-y-4 shadow-md">
-        <h3 class="text-2xl font-semibold">Stay Updated</h3>
-        <p class="text-sm max-w-md">Subscribe to our newsletter for latest releases, ticket deals, and events.</p>
-        <form action="#" method="POST" class="w-full max-w-sm flex gap-2">
-            <input type="email" name="email" required
-                class="flex-1 px-3 py-2 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground"
-                placeholder="Enter your email">
-            <button type="submit"
-                class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 transition">Subscribe</button>
-        </form>
-    </section>
-
-    </main>
-
+            </div>
+        </section>
+    @endif
 </x-layout>

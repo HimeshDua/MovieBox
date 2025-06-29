@@ -43,10 +43,16 @@ class AdminController extends Controller
             'duration' => 'nullable|integer',
             'year' => 'nullable|integer',
             'rating' => 'nullable|numeric|min:0|max:10',
-            'poster' => 'nullable',
+            'poster' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'link' => 'nullable|url',
             'trailer_url' => 'required|url',
         ]);
+
+        $image = $request->file('poster');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('posters'), $filename);
+
+        $validated['poster'] = $filename;
 
         Movie::create($validated);
 
@@ -156,11 +162,7 @@ class AdminController extends Controller
     // listUsers
     public function listUsers()
     {
-        $users =  User::latest()->get();
+        $users =  User::with('bookings')->latest()->get();
         return view('admin.users.index', compact('users'));
     }
-
-
-
-    // TODO: Add analytics page (e.g., top movies, total sales, etc.)
 }

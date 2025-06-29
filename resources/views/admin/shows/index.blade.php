@@ -12,29 +12,29 @@
         </ol>
     </nav>
 
-    <div class="flex justify-between items-center mb-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
         <h2 class="text-2xl font-bold text-foreground">All Shows</h2>
-        <a href="{{ route('admin.shows.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.shows.create') }}" class="btn btn-primary w-full sm:w-auto">
             + Add New Show
         </a>
     </div>
 
     @if ($shows->count())
         <div class="overflow-x-auto bg-card border border-border rounded-xl shadow-sm">
-            <table class="w-full table-auto text-sm text-left">
+            <table class="w-full min-w-[700px] table-auto text-sm text-left">
                 <thead class="bg-muted text-muted-foreground">
                     <tr>
-                        <th class="px-4 py-3">Movie</th>
-                        <th class="px-4 py-3">City</th>
-                        <th class="px-4 py-3">Location</th>
-                        <th class="px-4 py-3">Show Date</th>
-                        <th class="px-4 py-3">Show Time</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Movie</th>
+                        <th class="px-4 py-3 whitespace-nowrap">City</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Location</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Show Date</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Show Time</th>
+                        <th class="px-4 py-3 whitespace-nowrap text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($shows as $show)
-                        <tr class="border-t border-border hover:bg-muted/50 transition-colors">
+                        <tr class="border-t border-border hover:bg-muted/40 transition-colors">
                             <td class="px-4 py-3 font-medium text-foreground">
                                 {{ $show->movie->title }}
                             </td>
@@ -42,15 +42,16 @@
                             <td class="px-4 py-3">{{ $show->location ?? '-' }}</td>
                             <td class="px-4 py-3">{{ \Carbon\Carbon::parse($show->show_date)->format('d M Y') }}</td>
                             <td class="px-4 py-3">{{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</td>
-                            <td class="px-4 py-3 space-x-1 space-y-2">
+                            <td class="px-4 py-3 space-x-2 text-right whitespace-nowrap">
                                 <a href="{{ route('admin.shows.edit', $show->id) }}"
-                                    class="w-full btn btn-outline text-xs">Edit</a>
+                                    class="btn btn-outline text-xs">Edit</a>
 
                                 <form action="{{ route('admin.shows.destroy', $show->id) }}" method="POST"
+                                    class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this show?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-full  btn btn-destructive text-xs">Delete</button>
+                                    <button type="submit" class="btn btn-destructive text-xs">Delete</button>
                                 </form>
                             </td>
                         </tr>

@@ -12,16 +12,17 @@
         </ol>
     </nav>
 
-    <div class="flex justify-between items-center mb-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
         <h2 class="text-2xl font-bold text-foreground">All Movies</h2>
-        <a href="{{ route('admin.movies.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.movies.create') }}" class="btn btn-primary w-full sm:w-auto">
             + Add New Movie
         </a>
     </div>
 
     @if ($movies->count())
+        {{-- Responsive Table --}}
         <div class="overflow-x-auto bg-card border border-border rounded-xl shadow-sm">
-            <table class="w-full table-auto text-sm text-left">
+            <table class="w-full min-w-[700px] text-sm text-left">
                 <thead class="bg-muted text-muted-foreground">
                     <tr>
                         <th class="px-4 py-3">Poster</th>
@@ -30,25 +31,26 @@
                         <th class="px-4 py-3">Language</th>
                         <th class="px-4 py-3">Rating</th>
                         <th class="px-4 py-3">Year</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3 text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($movies as $movie)
-                        <tr class="border-t border-border hover:bg-muted/50 transition-colors">
+                        <tr class="border-t border-border hover:bg-muted/40 transition-colors">
                             <td class="px-4 py-3">
-                                <img src="{{ asset($movie->poster ?? 'placeholder.jpg') }}" alt="{{ $movie->title }}"
-                                    class="w-14 h-20 object-cover rounded-md shadow-sm">
+                                <img src="{{ asset('/posters/' . ($movie->poster ?? 'placeholder.png')) }}"
+                                    alt="{{ $movie->title }}" class="w-14 h-20 object-cover rounded shadow-sm">
                             </td>
-                            <td class="px-4 py-3 font-medium text-foreground">{{ $movie->title }}</td>
-                            <td class="px-4 py-3">{{ $movie->category }}</td>
-                            <td class="px-4 py-3">{{ $movie->language }}</td>
-                            <td class="px-4 py-3">{{ $movie->rating }}/10</td>
+                            <td class="px-4 py-3 font-medium text-foreground max-w-[160px] truncate">
+                                {{ $movie->title }}
+                            </td>
+                            <td class="px-4 py-3">{{ $movie->category ?? '-' }}</td>
+                            <td class="px-4 py-3">{{ $movie->language ?? '-' }}</td>
+                            <td class="px-4 py-3">⭐ {{ $movie->rating }}/10</td>
                             <td class="px-4 py-3">{{ $movie->year }}</td>
-                            <td class="px-4 py-3 space-x-2">
+                            <td class="px-4 py-3 text-right space-x-2 whitespace-nowrap">
                                 <a href="{{ route('admin.movies.edit', $movie->slug) }}"
                                     class="btn btn-outline text-xs">Edit</a>
-
                                 <form action="{{ route('admin.movies.destroy', $movie->slug) }}" method="POST"
                                     class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this movie?');">
@@ -63,7 +65,6 @@
             </table>
         </div>
 
-        {{-- Pagination --}}
         <div class="mt-6">
             {{ $movies->links() }}
         </div>

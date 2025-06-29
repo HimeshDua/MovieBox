@@ -1,7 +1,7 @@
 <x-layout>
 
     <x-slot:title>
-        Movie Collection - Movie Box
+        Browse Our Movie Collection - Movie Box
     </x-slot>
 
     <x-slot:section_title>
@@ -17,7 +17,8 @@
 
                     <div class="w-full sm:w-48 h-60 sm:h-auto bg-muted overflow-hidden">
                         @if ($movie->poster)
-                            <img src="{{ $movie->poster }}" alt="{{ $movie->title }}" class="w-full h-full object-cover" />
+                            <img src="{{ asset('/posters/' . ($movie->poster ?? 'placeholder.png')) }}"
+                                alt="{{ $movie->title }}" class="w-full h-full object-cover rounded-md shadow-sm" />
                         @else
                             <div
                                 class="w-full h-full flex items-center justify-center text-muted-foreground text-sm font-medium bg-muted">
@@ -71,5 +72,10 @@
         @endforeach
     </ul>
 
-    {{ $movies->links() }}
+
+
+    <div class="mt-10">
+        {{ $movies->links() }}
+    </div>
+
 </x-layout>

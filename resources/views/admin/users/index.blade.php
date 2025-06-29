@@ -7,37 +7,46 @@
         Customers Information
     </x-slot>
 
-    <div class="space-y-12">
-
-        <div class="bg-card border border-border rounded-xl p-6 shadow">
-            {{-- <h2 class="text-xl font-semibold text-foreground mb-4">👤 Users Information</h2> --}}
-
-            @if ($users->count())
-                <ul class="space-y-4">
+    <div class="bg-card border border-border rounded-2xl shadow-lg overflow-x-auto">
+        @if ($users->count())
+            <table class="w-full min-w-[700px] table-auto text-sm text-left">
+                <thead class="bg-muted text-muted-foreground uppercase tracking-wide text-xs border-b border-border">
+                    <tr>
+                        <th class="px-4 py-3 whitespace-nowrap">Name</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Email</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Age</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Birthdate</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Total Spend</th>
+                        <th class="px-4 py-3 whitespace-nowrap">Joined On</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
                     @foreach ($users as $user)
-                        <li class="border border-border rounded-lg p-4">
-                            <div class="text-sm text-muted-foreground space-y-1">
-                                <p><span class="font-medium text-foreground">Name: </span>
-                                    {{ $user->name }}</p>
-                                <p><span class="font-medium text-foreground">Email: </span> {{ $user->email }}</p>
-                                <p><span class="font-medium text-foreground">Age: </span> {{ $user->age }}
-                                </p>
-
-                                <p><span class="font-medium text-foreground">BirthDate: </span> {{ $user->birthdate }}
-                                </p>
-                                <p><span class="font-medium text-foreground">Total Spend:</span> Rs
-                                    {{ $user->total_spend }}</p>
-                                <p><span class="font-medium text-foreground">Joined:
-                                    </span>{{ \Carbon\Carbon::parse($user->created_at)->format('M d, Y') }}
-                                </p>
-                            </div>
-                        </li>
+                        <tr class="hover:bg-muted/50 transition-colors">
+                            <td class="px-4 py-3 font-medium text-foreground">
+                                {{ $user->name }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ \Carbon\Carbon::parse($user->date_of_birth)->age }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ \Carbon\Carbon::parse($user->date_of_birth)->format('M d, Y') }}
+                            </td>
+                            <td class="px-4 py-3">
+                                Rs {{ number_format($user->bookings->sum('total_price') ?? 0) }}
+                            </td>
+                            <td class="px-4 py-3">
+                                {{ $user->created_at->format('M d, Y') }}
+                            </td>
+                        </tr>
                     @endforeach
-                </ul>
-            @else
-                <p class="text-sm text-muted-foreground">You haven’t booked any shows yet.</p>
-            @endif
-        </div>
-
+                </tbody>
+            </table>
+        @else
+            <p class="text-sm text-muted-foreground p-6">No customers found yet.</p>
+        @endif
     </div>
 </x-admin-layout>

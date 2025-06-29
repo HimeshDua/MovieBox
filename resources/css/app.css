@@ -348,4 +348,16 @@
     .bg-chart-5 {
         background-color: var(--chart-5);
     }
+
+    :root {
+        --primary: #1e293b;
+        --primary-foreground: #fff;
+        --secondary: #64748b;
+        --secondary-foreground: #fff;
+        --accent: #fbbf24;
+        --background: #f8fafc;
+        --card: #fff;
+        --muted: #e2e8f0;
+        --border: #cbd5e1;
+    }
 }
