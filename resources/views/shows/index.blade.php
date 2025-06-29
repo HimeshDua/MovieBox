@@ -1,7 +1,5 @@
 <x-layout>
-    <x-slot:title>
-        Shows | MovieBox
-    </x-slot>
+    <x-slot:title>Book Your Show - MovieBox</x-slot>
 
     <x-slot:section_title>
         Book Your Show

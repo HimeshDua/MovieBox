@@ -1,4 +1,4 @@
-<x-admin-layout title="Movies | Movie Box">
+<x-admin-layout title="Movies List - Movie Box">
     {{-- Breadcrumb --}}
     <nav class="text-sm text-muted-foreground mb-6" aria-label="breadcrumb">
         <ol class="list-none p-0 inline-flex">
@@ -13,7 +13,8 @@
     </nav>
 
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-        <h2 class="text-2xl font-bold text-foreground">All Movies</h2>
+        <h1 class="text-3xl font-bold text-primary tracking-tight">
+            All Movies</h1>
         <a href="{{ route('admin.movies.create') }}" class="btn btn-primary w-full sm:w-auto">
             + Add New Movie
         </a>

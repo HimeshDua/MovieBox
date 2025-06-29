@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Profile | MovieBox
+        Profile Page - MovieBox
     </x-slot>
 
     <x-slot:section_title>

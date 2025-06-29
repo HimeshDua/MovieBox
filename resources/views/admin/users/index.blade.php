@@ -1,11 +1,20 @@
-<x-admin-layout>
-    <x-slot:title>
-        Customers Information | MovieBox
-    </x-slot>
+<x-admin-layout title="Customers Information - MovieBox">
 
-    <x-slot:section_title>
-        Customers Information
-    </x-slot>
+    <nav class="text-sm text-muted-foreground mb-6" aria-label="breadcrumb">
+        <ol class="list-none p-0 inline-flex">
+            <li class="flex items-center">
+                <a href="{{ route('admin.dashboard') }}" class="hover:text-primary transition-colors">Dashboard</a>
+                <span class="mx-2">/</span>
+            </li>
+            <li class="flex items-center">
+                <span class="text-foreground" aria-current="page">Customers</span>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+        <h1 class="text-3xl font-bold text-primary tracking-tight">Customers Information</h1>
+    </div>
 
     <div class="bg-card border border-border rounded-2xl shadow-lg overflow-x-auto">
         @if ($users->count())

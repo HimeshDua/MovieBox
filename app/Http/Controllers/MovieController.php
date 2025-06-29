@@ -20,7 +20,7 @@ class MovieController extends Controller
         $movie->load('shows');
         return view("movies.detail", [
             'movie' => $movie,
-            'title' => $movie->title . ' | Movie Box'
+            'title' => $movie->title . ' - Movie Box'
         ]);
     }
 

@@ -1,9 +1,9 @@
-<x-admin-layout :title="'Admin Dashboard'">
+<x-admin-layout :title="'Admin Dashboard - MovieBox'">
     <section class="space-y-6">
-        {{-- Page Heading --}}
-        <div class="flex items-center justify-between border-b border-border pb-4">
-            <h1 class="text-2xl font-bold text-foreground">Admin Dashboard</h1>
-            <span class="text-sm text-muted-foreground">Welcome back, {{ Auth::user()->name }} 👋</span>
+
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 border-b border-border pb-4">
+            <h1 class="text-3xl font-bold text-primary tracking-tight">Admin Dashboard</h1>
+            <span class="text-md text-muted-foreground">Welcome back, {{ Auth::user()->name }} 👋</span>
         </div>
 
         {{-- Stats Cards --}}
