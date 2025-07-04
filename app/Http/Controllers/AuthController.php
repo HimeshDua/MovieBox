@@ -25,6 +25,14 @@ class AuthController extends Controller
             'date_of_birth' => ['required', 'date', 'before:today'],
 
         ]);
+
+        $dob  =  Carbon::parse($req->date_of_birth);
+        $isEligibleAge  =  $dob->age <= 3;
+
+        if ($isEligibleAge) {
+            return redirect()->with('error', 'Your age is not eligible, grow up fast kid.');
+        }
+
         $isAdmin = User::count();
 
         if ($isAdmin === 0) {
@@ -33,8 +41,7 @@ class AuthController extends Controller
 
         $user = User::create($credentials);
         Auth::login($user);
-        $dob = Carbon::parse($user->date_of_birth);
-        $isKid =  $dob->age >= 12 && $dob->age <= 3;
+        $isKid = $dob->age >= 12 && $dob->age <= 3;
         session(['isKid' => $isKid]);
         return redirect('/')->with('success', 'User created successfully.');
     }

@@ -72,6 +72,14 @@
             </nav>
         </header>
 
+        @if (session('error'))
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
+                <div class="bg-red-100 text-red-800 text-sm p-3 rounded-lg mb-4">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
+
         @if (session('success'))
             <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
                 <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">
