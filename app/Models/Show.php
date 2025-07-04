@@ -19,7 +19,6 @@ class Show extends Model
         "price_silver",
         "price_gold",
         "price_platinum",
-        "price"
     ];
 
     public function movie()
