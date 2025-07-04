@@ -18,8 +18,10 @@ class MovieController extends Controller
     public function detail(Movie $movie)
     {
         $movie->load('shows');
+        $isKid = session('isKid');
         return view("movies.detail", [
             'movie' => $movie,
+            'isKid' => $isKid,
             'title' => $movie->title . ' - Movie Box'
         ]);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ class AuthController extends Controller
 
         $user = User::create($credentials);
         Auth::login($user);
+        $dob = Carbon::parse($user->date_of_birth);
+        $isKid =  $dob->age >= 12 && $dob->age <= 3;
+        session(['isKid' => $isKid]);
         return redirect('/')->with('success', 'User created successfully.');
     }
 

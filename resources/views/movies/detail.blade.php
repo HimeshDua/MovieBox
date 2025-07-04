@@ -98,7 +98,7 @@
                         @csrf
 
                         <input type="hidden" name="show_id" value="{{ $show->id }}">
-                        <input type="hidden" name="is_kid" value="0">
+                        <input type="hidden" name="is_kid" value="{{ $isKid ? 1 : 0 }}">
 
                         <h3 class="text-xl font-semibold text-foreground mb-2">🎬 {{ $movie->title }}</h3>
 
