@@ -73,7 +73,7 @@
         </header>
 
         @if (session('error'))
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-6">
                 <div class="bg-red-100 text-red-800 text-sm p-3 rounded-lg mb-4">
                     {{ session('error') }}
                 </div>
@@ -81,7 +81,7 @@
         @endif
 
         @if (session('success'))
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-6">
                 <div class="bg-green-100 text-green-800 text-sm p-3 rounded-lg mb-4">
                     {{ session('success') }}
                 </div>
@@ -89,14 +89,14 @@
         @endif
 
         @if (isset($section_title))
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-10">
                 <h1 class="text-3xl font-bold text-primary tracking-tight">
                     {{ $section_title }}
                 </h1>
             </div>
         @endif
 
-        <main class="max-w-5xl min-h-[60vh] mx-auto px-4 sm:px-6 py-10 space-y-12">
+        <main class="max-w-7xl relative min-h-[60vh] mx-auto px-4 sm:px-6 py-10 space-y-12">
             {{ $slot }}
         </main>
 

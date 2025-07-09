@@ -55,5 +55,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/shows/{show}', [AdminController::class, 'destroyShow'])->name("shows.destroy");
 
     // Manage Users
+    Route::get('/reviews', [AdminController::class, 'showReviews'])->name("reviews.index");
+
+    // Manage Users
     Route::get('/customers', [AdminController::class, 'listUsers'])->name("users.index");
 });

@@ -35,13 +35,16 @@
                             class="btn btn-link w-full sm:w-auto text-left">Movies</a></li>
                     <li><a href="{{ route('admin.shows.index') }}"
                             class="btn btn-link w-full sm:w-auto text-left">Shows</a></li>
+                    <li><a href="{{ route('admin.reviews.index') }}"
+                            class="btn btn-link w-full sm:w-auto text-left">Reviews</a></li>
                     <li><a href="{{ route('admin.users.index') }}"
                             class="btn btn-link w-full sm:w-auto text-left">Customers</a></li>
                 </ul>
 
                 @auth
                     <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:ml-6 w-full sm:w-auto">
-                        <a href="{{ route('profile.index') }}" class="btn btn-outline w-full sm:w-auto text-sm">
+                        <a href="{{ route('profile.index') }}"
+                            class="btn btn-outline line-clamp-1  w-full sm:w-auto text-sm">
                             {{ Auth::user()->name }}
                         </a>
                         <a href="{{ route('admin.dashboard') }}"

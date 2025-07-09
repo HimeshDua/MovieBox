@@ -12,10 +12,25 @@
                 @csrf
                 <input type="hidden" name="show_id" value="{{ $show->id }}">
 
+                {{-- Movie Poster --}}
+                <div class="w-full h-64 bg-muted rounded-lg overflow-hidden">
+                    @if ($show->movie->poster)
+                        <img src="{{ asset('/posters/' . $show->movie->poster) }}" alt="{{ $show->movie->title }}"
+                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+                    @else
+                        <div
+                            class="w-full h-full flex items-center justify-center text-muted-foreground text-sm bg-muted">
+                            No Poster Available
+                        </div>
+                    @endif
+                </div>
+
+                {{-- Movie Title --}}
                 <h3 class="text-xl font-semibold text-foreground tracking-tight flex items-center gap-2">
                     🎬 {{ $show->movie->title }}
                 </h3>
 
+                {{-- Show Info --}}
                 <div class="text-sm text-muted-foreground space-y-1 leading-relaxed">
                     <p><span class="font-medium text-foreground">📍 City:</span> {{ $show->city }}</p>
                     <p><span class="font-medium text-foreground">🏙️ Location:</span> {{ $show->location ?? 'N/A' }}</p>
@@ -25,6 +40,7 @@
                         {{ \Carbon\Carbon::parse($show->show_time)->format('h:i A') }}</p>
                 </div>
 
+                {{-- Class Selection --}}
                 <div>
                     <label for="class_type" class="block text-sm font-medium text-muted-foreground mb-1">🎟️
                         Select Class</label>
@@ -36,6 +52,7 @@
                     </select>
                 </div>
 
+                {{-- Ticket Quantity --}}
                 <div>
                     <label for="quantity" class="block text-sm font-medium text-muted-foreground mb-1">🎫 Number of
                         Tickets</label>
@@ -44,11 +61,13 @@
                         required>
                 </div>
 
+                {{-- Kid Checkbox --}}
                 <label class="inline-flex items-center gap-2 text-sm text-muted-foreground">
                     <input type="checkbox" name="is_kid" class="rounded border-border">
                     <span>Booking for a kid (3–12 years)?</span>
                 </label>
 
+                {{-- Submit Button --}}
                 @auth
                     <button type="submit" class="btn btn-primary w-full mt-2 transition duration-200">Book Now</button>
                 @else
@@ -58,6 +77,7 @@
         @endforeach
     </div>
 
+    {{-- Pagination --}}
     <div class="mt-10">
         {{ $shows->links() }}
     </div>

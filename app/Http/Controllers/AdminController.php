@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Movie;
+use App\Models\Review;
 use App\Models\Show;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,6 +19,13 @@ class AdminController extends Controller
             'moviesCount' => Movie::count(),
             'usersCount' => User::count(),
             'showsCount' => Show::count(),
+            'reviewsCount' => Review::count(),
+            'totalRevenue' => Booking::sum('total_price'),
+            'bookingsCount' => Booking::count(),
+            'recentBookings' => Booking::with('user', 'show.movie')->latest()->take(5)->get(),
+            'recentBookings' => Booking::with('user', 'show.movie')->latest()->take(5)->get(),
+            'topMovies' => Movie::orderByDesc('rating')->take(5)->get(),
+
         ]);
     }
 
@@ -157,6 +166,13 @@ class AdminController extends Controller
     {
         $show->delete();
         return back()->with('success', 'Show deleted.');
+    }
+
+    // Show all reviews
+    public function showReviews()
+    {
+        $reviews = Review::with(['user', 'movie'])->latest()->paginate(12);
+        return view('admin.reviews.index', compact('reviews'));
     }
 
     // listUsers
