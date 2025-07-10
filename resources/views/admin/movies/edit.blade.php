@@ -36,7 +36,10 @@
                 </div>
             @endif
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="hidden" name="old_poster" value="{{ $movie->poster }}">
+
+            <div class="grid
+                grid-cols-1 md:grid-cols-2 gap-6">
                 <x-form.input label="Movie Title" name="title" required :value="$movie->title"
                     placeholder="e.g., The Matrix" />
                 <x-form.input label="Category" name="category" :value="$movie->category" placeholder="e.g., Sci-Fi, Action" />

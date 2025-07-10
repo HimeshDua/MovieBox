@@ -9,6 +9,7 @@ use App\Models\Show;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -85,14 +86,28 @@ class AdminController extends Controller
             'duration' => 'nullable|integer',
             'year' => 'nullable|integer',
             'rating' => 'nullable|numeric|min:0|max:10',
-            'poster' => 'nullable|url',
+            'poster' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'link' => 'nullable|url',
             'trailer_url' => 'required|url',
+            'old_poster' => 'required|string',
         ]);
+
+        if ($request->hasFile('poster')) {
+
+            $image = $request->file('poster');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('posters'), $filename);
+            $validated['poster'] = $filename;
+
+            File::delete(public_path('posters/' . $request->old_poster));
+        } else {
+            $old_poster = $request->old_poster;
+            $validated['poster'] = $old_poster;
+        }
 
         $movie->update($validated);
 
-        return redirect()->back()->with('success', 'Movie updated successfully.');
+        return redirect('/admin/movies')->with('success', 'Movie updated successfully.');
     }
 
     // Delete movie
