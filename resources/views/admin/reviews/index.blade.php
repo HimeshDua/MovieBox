@@ -34,7 +34,9 @@
                             <td class="px-4 py-3 font-medium text-foreground">
                                 {{ $review->user->name }}
                             </td>
-                            <td class="px-4 py-3">{{ $review->movie->title }}</td>
+                            <td class="px-4 py-3"><a href="{{ route('movies.detail', $review->movie->slug) }}"
+                                    class='btn p-0! m-0! btn-link'>{{ $review->movie->title }}</a>
+                            </td>
                             <td class="px-4 py-3">⭐ {{ $review->rating }}/10</td>
                             <td class="px-4 py-3 text-muted-foreground max-w-[300px] truncate">
                                 {{ $review->comment }}
