@@ -67,14 +67,29 @@ This project was developed as a **2nd semester term-end project at Aptech** and 
 -   **🎬 Movie Listings Page**
     ![Movie Listings Page](screenshots/movie-listings.png)
 
--   **📆 Show Booking Form**
-    ![Show Booking Form](screenshots/booking-form.png)
+-   **🎬 Movie Details Page**
+    ![Movie Details Page](screenshots/movie-details.png)
+
+    **💬 Review Submission**
+    ![Review Submission](screenshots/review-submission.png)
 
 -   **📊 Admin Dashboard**
     ![Admin Dashboard](screenshots/admin-dashboard.png)
 
--   **💬 Review Submission**
-    ![Review Submission](screenshots/review-submission.png)
+    **📆 Movies List**
+    ![Movies List](screenshots/movies-list.png)
+
+    **📆 Shows List**
+    ![Shows List](screenshots/shows-list.png)
+
+    **📆 Reviews List**
+    ![Reviews List](screenshots/reviews-list.png)
+
+    **📆 Customers List**
+    ![Customers List](screenshots/customers-list.png)
+
+    **📆 Create Movie Show Form**
+    ![Create Movie Show Form](screenshots/create-show-form.png)
 
 ---
 
