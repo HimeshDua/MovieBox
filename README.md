@@ -83,8 +83,8 @@ Follow the steps below to set up and run MovieBox on your local machine.
 1.  **Clone the repository and navigate to the project directory:**
 
     ```bash
-    git clone git@github.com:HimeshDua/MovieBox.git
-    cd moviebox
+    git clone https://github.com/himeshdua/moviebox.git
+    cd MovieBox
     ```
 
 2.  **Install dependencies:**
@@ -92,7 +92,6 @@ Follow the steps below to set up and run MovieBox on your local machine.
     ```bash
     composer install
     npm install
-    npm run dev
     ```
 
 3.  **Set up the `.env` file:**
@@ -102,14 +101,21 @@ Follow the steps below to set up and run MovieBox on your local machine.
     cp .env.example .env
     ```
 
-4.  **Run migrations and seed the database:**
+4.  **Generate Application Key & Configure Database:**
+    Copy the example environment file, then run the command to generate your application key. After this, configure your MySQL database credentials in the `.env` file.
+
+    ```
+    php artisan key:generate
+    ```
+
+5.  **Run migrations and seed the database:**
     This command will create the necessary tables and populate them with sample data.
 
     ```bash
     php artisan migrate --seed
     ```
 
-5.  **Start the local development server:**
+6.  **Start the local development server:**
     ```bash
     php artisan serve
     ```
@@ -165,3 +171,7 @@ The database is structured with the following key tables:
 ## 📝 License
 
 This project is open-sourced under the **MIT license**.
+
+```
+
+```
