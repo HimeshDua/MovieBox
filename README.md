@@ -50,13 +50,15 @@ This project was developed as a **2nd semester term-end project at Aptech** and 
 
 -   `moviebox/`
     -   `app/`
-        -   `Http/Controllers/` (MovieController, ShowController, BookingController, etc.)
-        -   `Models/` (Movie, Show, Booking, User, Review)
-    -   `resources/views/` (Blade templates)
-    -   `routes/web.php` (All web routes)
-    -   `public/posters/` (Uploaded poster images)
-    -   `database/migrations/` (Tables: users, movies, shows, bookings, reviews)
-    -   `.env` (Environment variables) # Environment variables
+        -   `Http/Controllers/` → `MovieController`, `ShowController`, `BookingController`, etc.
+        -   `Models/` → `Movie`, `Show`, `Booking`, `User`, `Review`
+    -   `resources/views/` → All Blade templates
+    -   `routes/web.php` → App routes
+    -   `database/migrations/` → Table structures for movies, shows, bookings, etc.
+    -   `database/factories/` → Model factories for test data
+    -   `database/seeders/` → Seed classes for users, movies, shows, etc.
+    -   `public/posters/` → Uploaded movie posters
+    -   `.env` → Environment-specific variables
 
 ---
 
@@ -83,7 +85,7 @@ Follow the steps below to set up and run MovieBox on your local machine.
 1.  **Clone the repository and navigate to the project directory:**
 
     ```bash
-    git clone https://github.com/himeshdua/moviebox.git
+    git clone https://github.com/HimeshDua/MovieBox.git
     cd MovieBox
     ```
 
@@ -95,17 +97,28 @@ Follow the steps below to set up and run MovieBox on your local machine.
     ```
 
 3.  **Set up the `.env` file:**
-    Copy the example environment file and configure your database settings.
+    Copy the example environment file and configure your database settings in it.
 
     ```bash
     cp .env.example .env
     ```
 
-4.  **Generate Application Key & Configure Database:**
-    Copy the example environment file, then run the command to generate your application key. After this, configure your MySQL database credentials in the `.env` file.
+4.  **Generate application key & configure database:**
+    Run the following Artisan command to generate the app key.
 
-    ```
+    ```bash
     php artisan key:generate
+    ```
+
+    Then update your .env file with the correct database credentials:
+
+    ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=moviebox
+    DB_USERNAME=root
+    DB_PASSWORD=
     ```
 
 5.  **Run migrations and seed the database:**
@@ -117,7 +130,7 @@ Follow the steps below to set up and run MovieBox on your local machine.
 
 6.  **Start the local development server:**
     ```bash
-    php artisan serve
+    composer dev
     ```
     Visit `http://127.0.0.1:8000` in your browser to view the application.
 
@@ -172,6 +185,9 @@ The database is structured with the following key tables:
 
 This project is open-sourced under the **MIT license**.
 
+````
+
 ```
 
 ```
+````
