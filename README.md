@@ -96,41 +96,27 @@ Follow the steps below to set up and run MovieBox on your local machine.
     npm install
     ```
 
-3.  **Set up the `.env` file:**
-    Copy the example environment file and configure your database settings in it.
+3.  **Set up the `.env` file and generate the application key:**
 
     ```bash
     cp .env.example .env
-    ```
-
-4.  **Generate application key & configure database:**
-    Run the following Artisan command to generate the app key.
-
-    ```bash
     php artisan key:generate
     ```
 
-    Then update your .env file with the correct database credentials:
+    Next, open the `.env` file and update the `DB_` variables with your MySQL database credentials.
 
-    ```bash
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=moviebox
-    DB_USERNAME=root
-    DB_PASSWORD=
-    ```
-
-5.  **Run migrations and seed the database:**
-    This command will create the necessary tables and populate them with sample data.
+4.  **Run migrations and seed the database:**
+    This command will create the necessary database tables and populate them with sample data.
 
     ```bash
     php artisan migrate --seed
     ```
 
-6.  **Start the local development server:**
+5.  **Start the local development server:**
+    Run these two commands in separate terminal windows to serve both the back-end and front-end assets.
     ```bash
-    composer dev
+    php artisan serve
+    npm run dev
     ```
     Visit `http://127.0.0.1:8000` in your browser to view the application.
 
@@ -183,11 +169,4 @@ The database is structured with the following key tables:
 
 ## 📝 License
 
-This project is open-sourced under the **MIT license**.
-
-````
-
-```
-
-```
-````
+This project is open-sourced under the [MIT license](https://opensource.org/licenses/MIT).
