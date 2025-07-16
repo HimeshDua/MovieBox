@@ -14,7 +14,7 @@
 
 ## 🎥 About MovieBox
 
-**MovieBox** is a fully functional movie ticket booking system built using **Laravel 10**. It allows users to browse currently showing and top-rated movies, watch trailers, read and post reviews, and book movie tickets — all through a responsive, user-friendly interface.
+**MovieBox** is a fully functional movie ticket booking system built using **Laravel 12**. It allows users to browse currently showing and top-rated movies, watch trailers, read and post reviews, and book movie tickets — all through a responsive, user-friendly interface.
 
 This project was developed as a **2nd semester term-end project at Aptech** and built entirely by one person within just **8 days**. It demonstrates full-stack capability, including admin management, role-based access control, database design, and clean UI components.
 
@@ -37,7 +37,7 @@ This project was developed as a **2nd semester term-end project at Aptech** and 
 
 ## ⚙️ Tech Stack
 
--   **Framework**: Laravel 10 (MVC architecture)
+-   **Framework**: Laravel 12 (MVC architecture)
 -   **Frontend**: Blade Templating, Tailwind CSS
 -   **UI Libraries**: ShadCN-inspired components, BadtzUI, PrismUI
 -   **Database**: MySQL using Eloquent ORM
