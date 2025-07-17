@@ -71,7 +71,7 @@ This project was developed as a **2nd semester term-end project at Aptech** and 
     ![Movie Details Page](screenshots/movie-details.png)
 
     **💬 Review Submission**
-    ![Review Submission](screenshots/review-submission.png)
+    <!-- ![Review Submission](screenshots/review-submission.png) -->
 
 -   **📊 Admin Dashboard**
     ![Admin Dashboard](screenshots/admin-dashboard.png)
